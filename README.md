@@ -11,6 +11,7 @@ Project for University of Athabasca Comp 266
 * at least one <span> tag (preferably more), with a specified name, to identify a section of text within a paragraph or other block-level element (again, no immediate value—for use later). It would be best if this were something that you see the need to reformat later to change its appearance, position, or behaviour, for example, a change in typeface or font.
 * a table. (Special note regarding tables: tables are only ever to be used for tabular data, with meaningful rows and columns of data, never to lay out things on the page—such use is common but strongly deprecated because of accessibility issues).
 * a form, the contents of which are mailed to the author (you).
+
 ### Unit 1 Subjective requirements
 * well structured, standards-compliant HTML code with no deprecated tags, attributes, or uses of HTML
 * effective use of the scenarios and personas from Unit 1, with clear rationales and appropriate design decisions based on how you expect the pages to be used and who you expect to use them.
