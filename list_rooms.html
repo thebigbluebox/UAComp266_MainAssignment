@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<!--UAthabasca COMP 266 
+<!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
     Module 2
     Version 1.0
-    
+
     list_rooms.html
     This page will allow the user to see a list of rooms that are marked as open so that
     they can join it
@@ -31,11 +31,22 @@
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
     </nav>
-    
+
     <main>
-        
+        <section>
+            <table id="room_list">
+                <tr>
+                  <td>Name</td>
+                  <td>Date Created</td>
+                  <td><a href="./room.html=?XXXXX">Click here</a></td>
+                  <td>Location</td>
+                </tr>
+                <!-- The table will be generated using javascript while
+                      Retrieving all the data-->
+            </table>
+        </section>
     </main>
-        
+
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
@@ -46,6 +57,7 @@
             <br>
             Hamilton, Ontario
         </address>
+        <h3>Author Tai Rui Tong, March 16, 2016</h3>
     </footer>
 </body>
 

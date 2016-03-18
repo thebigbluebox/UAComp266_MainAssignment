@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<!--UAthabasca COMP 266 
+<!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
     Module 2
     Version 1.0
-    
+
     create_resturant.html
     This page will allow any user to create a resturant and submit it into the
     database to serve as a viable resturant to use
@@ -31,11 +31,34 @@
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
     </nav>
-    
+
     <main>
-        
+      <header>
+          <h1>Create New Room</h1>
+      </header>
+      <section>
+          <form>
+              <label for="room_name">
+                  Room name*
+              </label>
+              <br>
+              <input type="text" name="room_name" required="true">
+              <br>
+              <label for="room_open">
+                  Room open?
+              </label>
+              <br>
+              <input type="checkbox" name="room_open">
+              <br>
+              <label for="room_pin">
+                  Room pin
+              </label>
+              <br>
+              <input type="number" name="room_pin">
+          </form>
+      </section>
     </main>
-        
+
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
@@ -46,6 +69,7 @@
             <br>
             Hamilton, Ontario
         </address>
+        <h3>Author Tai Rui Tong, March 16, 2016</h3>
     </footer>
 </body>
 
