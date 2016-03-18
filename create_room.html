@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!--UAthabasca COMP 266 
+    Tai Rui Tong
+    March 16 2016
+    Module 2
+    Version 1.0
+    
+    create_room.html
+    This page will allow any user to create and register a new room and invite their
+    friends into the room to decide on a meal
+-->
+<head>
+    <title>Eatr - Create Room</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./_style/style.css">
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="description" content="A fine way to get to know your local cusines and eateries,
+    a clean way to find and explore new resturants with your friends">
+    <meta name="keywords" content="food, resturants, organics, exploring">
+    <meta name="author" content="Tai Rui Tong">
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html">
+            <img src="_img/logo.png" alt="Eatr logo" class="logo"/>
+        </a>
+        <a href="./create_resturant.html">Create Resturant</a>
+        <a href="./create_room.html">Create Room</a>
+        <a href="./list_rooms.html">List Open Rooms</a>
+    </nav>
+    
+    <main>
+        <header>
+            <h1>Create New Room</h1>
+        </header>
+        <section>
+            <form>
+                <label for="room_name">
+                    Room name*
+                </label>
+                <br>
+                <input type="text" name="room_name" required="true">
+                <br>
+                <label for="room_open">
+                    Room open?
+                </label>
+                <br>
+                <input type="checkbox" name="room_open">
+                <br>
+                <label for="room_pin">
+                    Room pin
+                </label>
+                <br>
+                <input type="number" name="room_pin">
+            </form>
+        </section>
+    </main>
+        
+    <footer>
+        <address>
+            <a href="./contact.html">Contact Me</a>
+            <br>
+            Eatr.com
+            <br>
+            123 Main St. W
+            <br>
+            Hamilton, Ontario
+        </address>
+    </footer>
+</body>
+
+</html>
