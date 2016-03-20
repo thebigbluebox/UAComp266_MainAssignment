@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
@@ -10,6 +10,7 @@
     This page will allow any user to create a resturant and submit it into the
     database to serve as a viable resturant to use
 -->
+
 <head>
     <title>Eatr - Create Resturant</title>
     <!-- Stylesheet -->
@@ -25,7 +26,7 @@
 <body>
     <nav>
         <a href="./index.html">
-            <img src="_img/logo.png" alt="Eatr logo" class="logo"/>
+            <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
         </a>
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
@@ -33,30 +34,70 @@
     </nav>
 
     <main>
-      <header>
-          <h1>Create New Room</h1>
-      </header>
-      <section>
-          <form>
-              <label for="room_name">
-                  Room name*
-              </label>
-              <br>
-              <input type="text" name="room_name" required="true">
-              <br>
-              <label for="room_open">
-                  Room open?
-              </label>
-              <br>
-              <input type="checkbox" name="room_open">
-              <br>
-              <label for="room_pin">
-                  Room pin
-              </label>
-              <br>
-              <input type="number" name="room_pin">
-          </form>
-      </section>
+        <section>
+            <header>
+                <h1>Create New Resturant</h1>
+            </header>
+            <!-- Currently the form does not contain any actions because this will be processed by the Javascript libraries -->
+            <form class="new_resturant">
+                <label for="resturant_name_input">
+                    Resturant Name*
+                </label>
+                <br>
+                <input type="text" name="resturant_name" id="resturant_name_input" required>
+                <br>
+                <label for="resturant_location_input">
+                    Resturant Location*
+                </label>
+                <br>
+                <input type="text" name="resturant_location" id="resturant_location_input" required>
+                <br>
+                <label for="resturant_type_select">
+                    Resturant Type
+                </label>
+                <br>
+                <select name="resturant_type" id="resturant_type_select" multiple>
+                    <option value="chinese">Chinese</option>
+                    <option value="indian">Indian</option>
+                    <option value="italian">Italian</option>
+                    <option value="korean">Korean</option>
+                </select>
+                <br>
+                <label for="other_resturant_type_input">Other Resturant Type:</label>
+                <input type="text" name="other_resturant_type" id="other_resturant_type_input">
+                <br>
+                <ul class="tags_list">
+                    <li class="tag">Dynamic List of tags will go here</li>
+                </ul>
+                <br>
+                <label for="resturant_dietary_restriction_select">
+                    Resturant Dietary Restriction
+                </label>
+                <br>
+                <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple>
+                    <option value="vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="halal">Halal</option>
+                    <option value="egg">Egg Free</option>
+                    <option value="gluten">Gluten Free</option>
+                </select>
+                <br>
+                <label for="other_resturant_dietary_restriction_input">Other Dietary Restriction Type:</label>
+                <input type="text" name="other_resturant_dietary_restriction" id="other_resturant_dietary_restriction_input">
+                <br>
+                <ul class="tags_list">
+                    <li class="tag">Dynamic List of tags will go here</li>
+                </ul>
+                <br>
+                <label for="resturant_description_textarea">
+                    Description
+                </label>
+                <br>
+                <textarea name="resturant_description" id="resturant_description_textarea" placeholder="Description of resturant" cols="40" rows="10"></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
     </main>
 
     <footer>

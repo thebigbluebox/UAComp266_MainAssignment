@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
@@ -10,6 +10,7 @@
     This page will provide users an ability to send contact information to me
     It will hold the form abilities for users to submit messages
 -->
+
 <head>
     <title>Eatr - Contact</title>
     <!-- Stylesheet -->
@@ -25,7 +26,7 @@
 <body>
     <nav>
         <a href="./index.html">
-            <img src="_img/logo.png" alt="Eatr logo" class="logo"/>
+            <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
         </a>
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
@@ -36,19 +37,25 @@
         <header>
             <h1>Contact Me</h1>
         </header>
-        <form action="MAILTO:tongtr@mcmaster.com" method="post" enctype="text/text/plain">
-            <label for="name">
+        <form action="MAILTO:tongtr@mcmaster.com" method="post" enctype="text/plain">
+            <label for="name_input">
                 Name:
             </label>
-            <input type="text" name="name" placeholder="Firstname Lastname">
-            <label for="email">
+            <br>
+            <input type="text" name="name" id="name_input" placeholder="Firstname Lastname">
+            <br>
+            <label for="email_input">
                 Email:
             </label>
-            <input type="email" name="email" placeholder="email@domain.com">
-            <label for="Message">
+            <br>
+            <input type="email" name="email" id="email_input" placeholder="email@domain.com">
+            <br>
+            <label for="message_input">
                 Message:
             </label>
-            <input type="email" name="message" placeholder="email@domain.com">
+            <br>
+            <textarea name="message" id="message_input" placeholder="Your Message here" cols="40" rows="10"></textarea>
+            <br>
             <input type="submit" value="Submit">
         </form>
     </main>

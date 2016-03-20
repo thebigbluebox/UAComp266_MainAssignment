@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
@@ -10,6 +10,7 @@
     This page will allow the user to see a list of rooms that are marked as open so that
     they can join it
 -->
+
 <head>
     <title>Eatr - List rooms</title>
     <!-- Stylesheet -->
@@ -25,7 +26,7 @@
 <body>
     <nav>
         <a href="./index.html">
-            <img src="_img/logo.png" alt="Eatr logo" class="logo"/>
+            <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
         </a>
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
@@ -34,15 +35,27 @@
 
     <main>
         <section>
+            <header>
+                <h1>Room List</h1>
+            </header>
             <table id="room_list">
+                <caption>Room List Table</caption>
                 <tr>
-                  <td>Name</td>
-                  <td>Date Created</td>
-                  <td><a href="./room.html=?XXXXX">Click here</a></td>
-                  <td>Location</td>
+                    <td></td>
+                    <th scope="col">Room Name</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Location</th>
                 </tr>
                 <!-- The table will be generated using javascript while
                       Retrieving all the data-->
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Greatest Room for UTM</td>
+                    <td>January 1st, 2016</td>
+                    <td><a href="./room.html?room=294" title="Room in Mississauga">Link</a>
+                    <td><address>Mississauga</address>
+                </tr>
             </table>
         </section>
     </main>

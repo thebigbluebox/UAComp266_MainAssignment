@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!--UAthabasca COMP 266
     Tai Rui Tong
     March 16 2016
@@ -9,6 +9,7 @@
     room.html
     This page will hold where users will see and vote for different resturants
 -->
+
 <head>
     <title>Eatr - Room</title>
     <!-- Stylesheet -->
@@ -24,7 +25,7 @@
 <body>
     <nav>
         <a href="./index.html">
-            <img src="_img/logo.png" alt="Eatr logo" class="logo"/>
+            <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
         </a>
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
@@ -32,7 +33,85 @@
     </nav>
 
     <main>
+        <section>
+            <header>
+                <h1>Room name</h1>
+                <h3>Pin: 1347</h3>
+                <h3>Location: Mississauga</h3>
+                <h3>Share this link to your friends <a href="" title="The link of to get to this room">Copy this link</a></h3>
+                <form id="join_room">
+                    <label for="name_input">
+                        Name:
+                    </label>
+                    <br>
+                    <input type="text" name="name" id="name_input" placeholder="Ex. Marie An">
+                    <br>
+                    <label for="email_input">
+                        Email:
+                    </label>
+                    <br>
+                    <input type="email" name="email" id="email_input" placeholder="Ex. terry@m.com">
+                    <br>
+                    <label for="resturant_dietary_restriction_select">
+                    Resturant Dietary Restriction
+                </label>
+                <br>
+                <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple>
+                    <option value="vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="halal">Halal</option>
+                    <option value="egg">Egg Free</option>
+                    <option value="gluten">Gluten Free</option>
+                </select>
+                </form>
+                <button type="submit" form="join_room" value="submit">Join</button>
+            </header>
+        </section>
+        <table class="participants">
+            <caption>List of participants in the vote</caption>
+            <tr>
+                <td></td>
+                <th scope="col">Name</th>
+                <th scope="col">Voted</th>
+            </tr>
+            <!-- Dynamically JS added participants in the following rows -->
+            <tr>
+                <th scope="row">1</th>
+                <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
+                <td>Yes</td>
+            </tr> 
+        </table>
+        <br>
+        <label for="resturant_name_input">Add Resturant</label>
+        <input type="text" name="resturant_name" id="resturant_name_input">
+        <br>
+        <table class="resturants">
+            <caption>List of resturants in the vote</caption>
+            <tr>
+                <td></td>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Food Criterias</th>
+                <th scope="col">Vote</th>
+            </tr>
+            <!-- Dynamically JS added participants in the following rows -->
+            <tr>
+                <th scope="row">1</th>
+                <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a>
+                <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address>
+                <td>
+                    <ul>
+                        <li>Fast food</li>
+                        <li>American</li>
+                        <li>Coffee</li>
+                    </ul>
+                </td>
+                <td class="votes">10</td>
+            </tr> 
+        </table>
+        <div class="vote_diagram">
 
+        </div>
     </main>
 
     <footer>
