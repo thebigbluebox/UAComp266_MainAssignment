@@ -1,0 +1,41 @@
+* {
+  font-family: 'Dosis', sans-serif;
+}
+body {
+  padding:0px;
+  margin:0px;
+}
+
+nav {
+  height: 100px;
+  width: 100%;
+  background-color: #FDE04E;
+}
+
+
+.nav_bar {
+
+
+}
+
+.nav_bar {
+  list-style:none;
+  margin: 0;
+  padding-left:0;
+}
+
+.nav_bar li {
+  display: inline;
+}
+
+.nav_left {
+  width:auto;
+  height: auto;
+  float:left;
+}
+
+.nav_right {
+  width:auto;
+  height: auto;
+  float:right;
+}
