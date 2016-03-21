@@ -14,13 +14,7 @@
 <head>
     <title>Eatr - Create Resturant</title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./_style/style.css">
-    <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta name="description" content="A fine way to get to know your local cusines and eateries,
-    a clean way to find and explore new resturants with your friends">
-    <meta name="keywords" content="food, resturants, organics, exploring">
-    <meta name="author" content="Tai Rui Tong">
+    <link rel="stylesheet" href="./_style/style.css" />
 </head>
 
 <body>
@@ -31,6 +25,7 @@
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
+        <a href="./find_resturants.html">Find Resturants</a>
     </nav>
 
     <main>
@@ -39,42 +34,48 @@
                 <h1>Create New Resturant</h1>
             </header>
             <!-- Currently the form does not contain any actions because this will be processed by the Javascript libraries -->
-            <form class="new_resturant">
+            <form name="new_resturant_form" action="">
                 <label for="resturant_name_input">
                     Resturant Name*
                 </label>
-                <br>
-                <input type="text" name="resturant_name" id="resturant_name_input" required="required">
-                <br>
+                <br />
+                <input type="text" name="resturant_name" id="resturant_name_input" placeholder="Ex. My Resturant" required="required" />
+                <br />
                 <label for="resturant_location_input">
                     Resturant Location*
                 </label>
-                <br>
-                <input type="text" name="resturant_location" id="resturant_location_input" required="required">
-                <br>
-                <label for="resturant_type_select">
-                    Resturant Type
+                <br />
+                <input type="text" name="resturant_location" id="resturant_location_input" placeholder="Ex. 142 Mississauga Rd" required="required"
+                />
+                <br />
+                <label for="resturant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
+                to dine at">
+                    Cusine Type
                 </label>
-                <br>
-                <select name="resturant_type" id="resturant_type_select" multiple="multiple" required="required">
+                <br />
+                <select name="resturant_type" id="resturant_cusine_select" multiple="multiple" required="required">
                     <option value="chinese">Chinese</option>
                     <option value="indian">Indian</option>
                     <option value="italian">Italian</option>
                     <option value="korean">Korean</option>
                     <option value="american">American</option>
                 </select>
-                <br>
-                <label for="other_resturant_type_input">Other Resturant Type:</label>
-                <input type="text" name="other_resturant_type" id="other_resturant_type_input">
-                <br>
+                <br />
+                <label for="other_resturant_type_input" title="If the cusine type isn't currently located in the options above
+                you can enter the type of cusine that best fits your resturant below">
+                    Other Resturant Type, press enter to add
+                </label>
+                <input type="text" name="other_resturant_type" id="other_resturant_type_input" placeholder="Ex. Asian Fusion" />
+                <br />
                 <ul class="tags_list">
                     <li class="tag">Dynamic List of tags will go here</li>
                 </ul>
-                <br>
-                <label for="resturant_dietary_restriction_select">
+                <br />
+                <label for="resturant_dietary_restriction_select" title="If your resturant caters to a specific type of dietary restriction, you can
+                add that to your resturant profile. Please make sure that this is accurate to prevent users from getting harmed">
                     Resturant Dietary Restriction
                 </label>
-                <br>
+                <br />
                 <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
                     <option value="vegan">Vegan</option>
                     <option value="vegetarian">Vegetarian</option>
@@ -82,21 +83,25 @@
                     <option value="egg">Egg Free</option>
                     <option value="gluten">Gluten Free</option>
                 </select>
-                <br>
-                <label for="other_resturant_dietary_restriction_input">Other Dietary Restriction Type:</label>
-                <input type="text" name="other_resturant_dietary_restriction" id="other_resturant_dietary_restriction_input">
-                <br>
+                <br />
+                <label for="other_resturant_dietary_restriction_input" title="If the dietary restriction isn't currently located in the options above
+                you can enter the type of dietary restriction that best fits your resturant below'">
+                    Other Dietary Restriction Type, press enter to add
+                </label>
+                <input type="text" name="other_resturant_dietary_restriction" id="other_resturant_dietary_restriction_input" placeholder="Ex. Kiwi" />
+                <br />
                 <ul class="tags_list">
                     <li class="tag">Dynamic List of tags will go here</li>
                 </ul>
-                <br>
-                <label for="resturant_description_textarea" required="required">
-                    Description
+                <br />
+                <label for="resturant_description_textarea">
+                    Resturant Description
                 </label>
-                <br>
-                <textarea name="resturant_description" id="resturant_description_textarea" placeholder="Description of resturant" cols="40" rows="10"></textarea>
-                <br>
-                <input type="submit" value="Submit">
+                <br />
+                <textarea name="resturant_description" id="resturant_description_textarea" placeholder="Description of resturant" cols="40"
+                rows="10"></textarea>
+                <br />
+                <input type="submit" value="Submit" />
             </form>
         </section>
     </main>
@@ -104,11 +109,11 @@
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
-            <br>
+            <br />
             Eatr.com
-            <br>
+            <br />
             123 Main St. W
-            <br>
+            <br />
             Hamilton, Ontario
         </address>
         <h3>Author Tai Rui Tong, March 16, 2016</h3>

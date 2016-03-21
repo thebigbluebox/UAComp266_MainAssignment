@@ -14,13 +14,7 @@
 <head>
     <title>Eatr - Create Room</title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./_style/style.css">
-    <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta name="description" content="A fine way to get to know your local cusines and eateries,
-    a clean way to find and explore new resturants with your friends">
-    <meta name="keywords" content="food, resturants, organics, exploring">
-    <meta name="author" content="Tai Rui Tong">
+    <link rel="stylesheet" href="./_style/style.css" />
 </head>
 
 <body>
@@ -31,6 +25,7 @@
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
+        <a href="./find_resturants.html">Find Resturants</a>
     </nav>
 
     <main>
@@ -39,32 +34,35 @@
                 <h1>Create New Room</h1>
             </header>
             <!-- Currently the form does not contain any actions because this will be processed by the Javascript libraries -->
-            <form class="new_room">
+            <form name="new_room_form" action="">
                 <label for="room_name_input">
                     Room name*
                 </label>
-                <br>
-                <input type="text" name="room_name" id="room_name_input" placeholder="Room name" required="required">
-                <br>
+                <br />
+                <input type="text" name="room_name" id="room_name_input" placeholder="Ex. UTM lunch group" required="required" />
+                <br />
                 <label for="room_location_input">
                     Room location*
                 </label>
-                <br>
-                <input type="text" name="room_location" id="room_location_input" placeholder="Room location" required="required">
-                <br>
-                <label for="room_open_checkbox">
-                    Room open?
+                <br />
+                <input type="text" name="room_location" id="room_location_input" placeholder="Ex. Mississauga Ontario" title="The rooms location will
+                describe where the room is located, giving better results for resturants" required="required" />
+                <br />
+                <label for="room_open_checkbox" title="By making the room public, this room will be visible to everyone on the room's list,
+                and you will not be able to set a pin for the room if it is public">
+                    Public Room?
                 </label>
-                <br>
-                <input type="checkbox" name="room_open" id="room_open_checkbox">
-                <br>
-                <label for="room_pin_input">
+                <br />
+                <input type="checkbox" name="room_open" id="room_open_checkbox" />
+                <br />
+                <label for="room_pin_input" title="If the room is closed and you would like to secure who has access to
+                the room, you can restrict access by setting a pin before entering the room">
                     Room pin
                 </label>
-                <br>
-                <input type="number" name="room_pin" id="room_pin_input" placeholder="PIN:1539">
-                <br>
-                <input type="submit" value="Submit">
+                <br />
+                <input type="number" name="room_pin" id="room_pin_input" placeholder="Ex.1539" />
+                <br />
+                <input type="submit" value="Submit" />
             </form>
         </section>
     </main>
@@ -72,11 +70,11 @@
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
-            <br>
+            <br />
             Eatr.com
-            <br>
+            <br />
             123 Main St. W
-            <br>
+            <br />
             Hamilton, Ontario
         </address>
         <h3>Author Tai Rui Tong, March 16, 2016</h3>

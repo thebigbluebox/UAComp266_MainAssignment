@@ -15,13 +15,8 @@
 <head>
     <title>Eatr - Landing</title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./_style/style.css">
-    <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta name="description" content="A fine way to get to know your local cusines and eateries,
-    a clean way to find and explore new resturants with your friends">
-    <meta name="keywords" content="food, resturants, organics, exploring">
-    <meta name="author" content="Tai Rui Tong">
+    <link rel="stylesheet" href="./_style/style.css" />
+
 </head>
 
 <body>
@@ -32,10 +27,11 @@
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
+        <a href="./find_resturants.html">Find Resturants</a>
     </nav>
 
     <main>
-        <section id="landing_title">
+        <section>
             <h1>Welcome to Eatr</h1>
             <h3>The better place to decide on where to eat!</h3>
         </section>
@@ -43,57 +39,71 @@
             <header>
                 <h2>I am here to...</h2>
             </header>
-                    <ul>
-                        <li>
-                            <a href="./create_room.html">
-                                <h4>Create a new Room</h4>
-                            </a>
-                        </li>
-                        <li>
-                            <form action="room.html" method="get">
-                                <label for="room_code">
-                                    Join an existing room
-                                </label>
-                                <input type="text" id="room_code" name="room">
-                            </form>
-                        </li>
-                        <li>
-                            <a href="./create_resturant.html"><h4>Register a new Restruant</h4></a>
-                        </li>
-                    </ul>
+            <ul>
+                <li>
+                    <h4>
+                        <a href="./create_room.html">
+                            Create a new Room
+                        </a>
+                    </h4>
+                </li>
+                <li>
+                    <form name="index_roomcode_form" action="room.html" method="get">
+                        <label for="room_code">
+                            Join an existing room
+                        </label>
+                        <input type="text" id="room_code" name="room" placeholder="Ex. 123456" />
+                    </form>
+                </li>
+                <li>
+                    <h4>
+                        <a href="./create_resturant.html">
+                            Register a new Restruant
+                        </a>
+                    </h4>
+                </li>
+            </ul>
         </section>
         <section>
             <header>
                 <h2>Why should you use Eatr?</h2>
             </header>
-                    <p>
-                        With online messaging services being so prevelant in our current society, the days of deciding on where to eat is still a
-                        never ending debate through a swath of continious IMs that never seems to keep track of itself. Now
-                        with Eatr.com, you can decide quicker and getting eating quicker within your large or small groups.
-                    </p>
-                    <h2>Huge Selections of resturants to suite your every need!</h2>
-                    <p>
-                        Still worried that resturant down the street would serve you something you're allergic to? Fear no more with Eatr.com, all
-                        resturants here that are register will pool show their use of ingredients and show whether if it
-                        satisfies a variety of different needs from vegan, to egg free meals. Eatr.com has you covered
-                    </p>
-                    <h2>Planning your next dinner, lunch, or even breakfast date</h2>
-                    <p>
-                        Why are you still waiting and planning your dining experiences the old fashion way?
-                        <br> Join Eatr.com now and start eating quicker!
-                    </p>
-                    <a href="./create_room.html">Create a room today!</a>
+            <p>
+                With online messaging services being so prevelant in our current society, the days of deciding on where to eat is still a
+                never ending debate through a swath of continious IMs that never seems to keep track of itself. Now with
+                Eatr.com, you can decide quicker and getting eating quicker within your large or small groups.
+            </p>
+        </section>
+        <section>
+            <header>
+                <h2>Huge Selections of resturants to suite your every need!</h2>
+            </header>
+            <p>
+                Still worried that resturant down the street would serve you something you're allergic to? Fear no more with Eatr.com, all
+                resturants here that are register will pool show their use of ingredients and show whether if it satisfies
+                a variety of different needs from vegan, to egg free meals. Eatr.com has you covered
+            </p>
+        </section>
+        <section>
+            <header>
+                <h2>Planning your next dinner, lunch, or even breakfast date</h2>
+            </header>
+            <p>
+                Why are you still waiting and planning your dining experiences the old fashion way?
+                <br /> Join Eatr.com now and start eating quicker!
+            </p>
+            <a href="./create_room.html">Create a room today!</a>
         </section>
     </main>
 
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
-            <br>
+            <br />
             Eatr.com
-            <br>
+            <br />
             123 Main St. W
-            <br>
+            <br />
             Hamilton, Ontario
         </address>
         <h3>Author Tai Rui Tong, March 16, 2016</h3>

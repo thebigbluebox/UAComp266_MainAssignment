@@ -13,13 +13,7 @@
 <head>
     <title>Eatr - Room</title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./_style/style.css">
-    <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta name="description" content="A fine way to get to know your local cusines and eateries,
-    a clean way to find and explore new resturants with your friends">
-    <meta name="keywords" content="food, resturants, organics, exploring">
-    <meta name="author" content="Tai Rui Tong">
+    <link rel="stylesheet" href="./_style/style.css" />
 </head>
 
 <body>
@@ -30,6 +24,7 @@
         <a href="./create_resturant.html">Create Resturant</a>
         <a href="./create_room.html">Create Room</a>
         <a href="./list_rooms.html">List Open Rooms</a>
+        <a href="./find_resturants.html">Find Resturants</a>
     </nav>
 
     <main>
@@ -39,89 +34,101 @@
                 <h3>Pin: 1347</h3>
                 <h3>Location: Mississauga</h3>
                 <h3>Share this link to your friends <a href="" title="The link of to get to this room">Copy this link</a></h3>
-                <form id="join_room">
+                <!-- The form in the future will be connected to a Javascript library-->
+                <form name="join_room_form" action="" id="join_room">
                     <label for="name_input">
-                        Name:
+                        Name
                     </label>
-                    <br>
-                    <input type="text" name="name" id="name_input" placeholder="Ex. Marie An">
-                    <br>
+                    <br />
+                    <input type="text" name="name" id="name_input" placeholder="Ex. Marie An" />
+                    <br />
                     <label for="email_input">
-                        Email:
+                        Email
                     </label>
-                    <br>
-                    <input type="email" name="email" id="email_input" placeholder="Ex. terry@m.com">
-                    <br>
-                    <label for="resturant_dietary_restriction_select">
-                    Resturant Dietary Restriction
-                </label>
-                <br>
-                <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
-                    <option value="vegan">Vegan</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="halal">Halal</option>
-                    <option value="egg">Egg Free</option>
-                    <option value="gluten">Gluten Free</option>
-                </select>
+                    <br />
+                    <input type="email" name="email" id="email_input" placeholder="Ex. terry@m.com" />
+                    <br />
+                    <label for="resturant_dietary_restriction_select" title="If you have any dietary restrictions you can add that to the options,
+                    the dietary restrictions will not be shown to everyone, it will however affect the number of resturants available">
+                        Dietary Restriction
+                    </label>
+                    <br />
+                    <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="halal">Halal</option>
+                        <option value="egg">Egg Free</option>
+                        <option value="gluten">Gluten Free</option>
+                    </select>
                 </form>
                 <button type="submit" form="join_room" value="submit">Join</button>
             </header>
         </section>
-        <table class="participants">
-            <caption>List of participants in the vote</caption>
-            <tr>
-                <td></td>
-                <th scope="col">Name</th>
-                <th scope="col">Voted</th>
-            </tr>
-            <!-- Dynamically JS added participants in the following rows -->
-            <tr>
-                <th scope="row">1</th>
-                <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
-                <td>Yes</td>
-            </tr> 
-        </table>
-        <br>
-        <label for="resturant_name_input">Add Resturant</label>
-        <input type="text" name="resturant_name" id="resturant_name_input">
-        <br>
-        <table class="resturants">
-            <caption>List of resturants in the vote</caption>
-            <tr>
-                <td></td>
-                <th scope="col">Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Food Criterias</th>
-                <th scope="col">Vote</th>
-            </tr>
-            <!-- Dynamically JS added participants in the following rows -->
-            <tr>
-                <th scope="row">1</th>
-                <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a>
-                <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address>
-                <td>
-                    <ul>
-                        <li>Fast food</li>
-                        <li>American</li>
-                        <li>Coffee</li>
-                    </ul>
-                </td>
-                <td class="votes">10</td>
-            </tr> 
-        </table>
-        <div class="vote_diagram">
+        <section>
+            <header>
+                <h2>Participants</h2>
+            </header>
+            <table class="participants">
+                <caption>List of participants in the vote</caption>
+                <tr>
+                    <td></td>
+                    <th scope="col">Name</th>
+                    <th scope="col">Voted</th>
+                </tr>
+                <!-- Dynamically JS added participants in the following rows -->
+                <tr>
+                    <th scope="row">1</th>
+                    <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
+                    <td>Yes</td>
+                </tr>
+            </table>
+        </section>
+        <br />
+        <section>
+            <header>
+                <h2>Resturants</h2>
+            </header>
+            <label for="resturant_name_input">Add Resturant</label>
+            <input type="text" name="resturant_name" id="resturant_name_input" placeholder="Ex. McDonalds" />
+            <br />
+            <table class="resturants">
+                <caption>List of resturants in the vote</caption>
+                <tr>
+                    <td></td>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Food Criterias</th>
+                    <th scope="col">Cast Vote</th>
+                </tr>
+                <!-- Dynamically JS added participants in the following rows -->
+                <tr>
+                    <th scope="row">1</th>
+                    <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
+                    <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
+                    <td>
+                        <ul>
+                            <li>Fast food</li>
+                            <li>American</li>
+                            <li>Coffee</li>
+                        </ul>
+                    </td>
+                    <td class="votes">10</td>
+                </tr>
+            </table>
+            <div class="vote_diagram">
 
-        </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <address>
             <a href="./contact.html">Contact Me</a>
-            <br>
+            <br />
             Eatr.com
-            <br>
+            <br />
             123 Main St. W
-            <br>
+            <br />
             Hamilton, Ontario
         </address>
         <h3>Author Tai Rui Tong, March 16, 2016</h3>
