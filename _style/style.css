@@ -17,22 +17,27 @@ nav {
 
 a {
   text-decoration: none;
+  color:black;
 }
 
 a:link {
-
+  text-decoration: none;
+  color:black;
 }
 
 a:visited {
-
+  text-decoration: none;
+  color:black;
 }
 
 a:hover {
-
+  text-decoration: none;
+  color:white;
 }
 
 a:active {
-
+  text-decoration: none;
+  color:gray;
 }
 
 h1 {
@@ -91,6 +96,7 @@ section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .nav_bar ul {
@@ -101,18 +107,13 @@ section {
 
 .nav_left {
   display: flex;
-  flex-grow: 1;
   order:0;
-}
-
-.nav_left ul li {
-    padding-left:5px;
+  padding-left:10px;
 }
 
 .nav_right {
   display: flex;
   justify-content: flex-end;
-  flex-grow: 4;
   order:1;
 }
 
@@ -123,4 +124,8 @@ section {
 .nav_right ul li{
   display:inline;
   padding-right:5px;
+}
+
+.section {
+  height: 100vh; 
 }
