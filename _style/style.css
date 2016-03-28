@@ -34,12 +34,6 @@ header {
     text-align: center;
 }
 
-main form {
-  order: 1;
-  flex-grow: 1;
-  flex-basis: 100%;
-}
-
 a {
     text-decoration: none;
     color:black;
@@ -104,7 +98,27 @@ footer {
     height:auto;
     background-color:#FDE04E;
     text-align:center;
-    padding: 1vh;
+    padding: 5px 0;
+}
+
+/*
+Styling for forms
+*/
+
+main form,
+main table {
+  order: 1;
+  flex-grow: 1;
+  flex-basis: 100%;
+  max-height: 70vh;
+  height: auto;
+  overflow-y:scroll;
+}
+
+input,
+select,
+textarea {
+  margin: 10px 0;
 }
 
 /*
@@ -114,6 +128,7 @@ To create a better looking text input
 
 input[type="text"],
 input[type="email"],
+select,
 textarea {
   padding: 10px;
   border: solid 5px #c9c9c9;
@@ -124,6 +139,8 @@ input[type="text"]:focus,
 input[type="text"].focus,
 input[type="email"]:focus,
 input[type="email"].focus,
+select:focus,
+select.focus,
 textarea:focus,
 textarea.focus {
   border: solid 5px #969696;
@@ -152,6 +169,18 @@ input[type="submit"].hover {
     background-color: lightgray;
 }
 
+/*
+Table formatting
+*/
+td {
+  text-align:center;
+  padding: 2%x;
+}
+
+th {
+  padding: 2%;
+}
+
 .inverse {
     color:white;
 
@@ -178,6 +207,10 @@ input[type="submit"].hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 
 .nav_bar ul {

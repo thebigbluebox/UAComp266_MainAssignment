@@ -44,44 +44,45 @@
     </nav>
 
     <main class="site-content">
-        <section>
-            <header>
+        <section class="aligner">
+            <header class="aligner-item">
                 <h1>Resutrants List</h1>
+                <form name="resturant_search_form" action="" class="aligner-item">
+                    <label for="search_text_input">
+                        Search
+                    </label>
+                    <br />
+                    <input type="text" name="search_text" id="search_text_input" placeholder="Ex. Burger King" />
+                    <br />
+                    <label for="resturant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
+                    to dine at">
+                        By Cusine Type
+                    </label>
+                    <br />
+                    <select name="resturant_type" id="resturant_cusine_select" multiple="multiple">
+                        <option value="chinese">Chinese</option>
+                        <option value="indian">Indian</option>
+                        <option value="italian">Italian</option>
+                        <option value="korean">Korean</option>
+                        <option value="american">American</option>
+                    </select>
+                    <br />
+                    <label for="resturant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
+                    fulfil the dietary restriction">
+                        Resturant Dietary Restriction
+                    </label>
+                    <br />
+                    <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="halal">Halal</option>
+                        <option value="egg">Egg Free</option>
+                        <option value="gluten">Gluten Free</option>
+                    </select>
+                    <input type="submit" value="Submit" />
+                </form>
             </header>
-            <form name="resturant_search_form" action="">
-                <label for="search_text_input">
-                    Search
-                </label>
-                <br />
-                <input type="text" name="search_text" id="search_text_input" placeholder="Ex. Burger King" />
-                <br />
-                <label for="resturant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
-                to dine at">
-                    By Cusine Type
-                </label>
-                <br />
-                <select name="resturant_type" id="resturant_cusine_select" multiple="multiple">
-                    <option value="chinese">Chinese</option>
-                    <option value="indian">Indian</option>
-                    <option value="italian">Italian</option>
-                    <option value="korean">Korean</option>
-                    <option value="american">American</option>
-                </select>
-                <br />
-                <label for="resturant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
-                fulfil the dietary restriction">
-                    Resturant Dietary Restriction
-                </label>
-                <br />
-                <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
-                    <option value="vegan">Vegan</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="halal">Halal</option>
-                    <option value="egg">Egg Free</option>
-                    <option value="gluten">Gluten Free</option>
-                </select>
-                <input type="submit" value="Submit" />
-            </form>
+
 
             <table id="resturants_list">
                 <caption>Resturants List Table</caption>
