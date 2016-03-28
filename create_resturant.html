@@ -15,27 +15,41 @@
     <title>Eatr - Create Resturant</title>
     <!-- Stylesheet -->
     <link href='https://fonts.googleapis.com/css?family=Dosis:500,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./_style/font-awesome.min.css">
     <link rel="stylesheet" href="./_style/style.css" />
+    <link rel="stylesheet" href="./_style/create-resturant.css" />
+
 </head>
 
-<body>
-    <nav>
-        <a href="./index.html">
-            <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
-        </a>
-        <a href="./create_resturant.html">Create Resturant</a>
-        <a href="./create_room.html">Create Room</a>
-        <a href="./list_rooms.html">List Open Rooms</a>
-        <a href="./find_resturants.html">Find Resturants</a>
+<body class="site">
+    <nav class="container">
+        <div class="nav_left nav_bar">
+            <ul>
+                <li>
+                    <a href="./index.html">
+                        <img src="_img/eatr.png" alt="Eatr logo" class="logo" width="83" height="33" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav_right nav_bar">
+            <ul>
+                <li><a href="./create_resturant.html">Create Resturant</a></li>
+                <li><a href="./create_room.html">Create Room</a></li>
+                <li><a href="./list_rooms.html">List Open Rooms</a></li>
+                <li><a href="./find_resturants.html">Find Resturants</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <section>
-            <header>
+    <main class="site-content">
+        <section class="aligner">
+            <header class="aligner-item">
                 <h1>Create New Resturant</h1>
             </header>
             <!-- Currently the form does not contain any actions because this will be processed by the Javascript libraries -->
-            <form name="new_resturant_form" action="">
+            <form name="new_resturant_form" action="" class="aligner-item">
                 <label for="resturant_name_input">
                     Resturant Name*
                 </label>
@@ -54,7 +68,7 @@
                     Cusine Type
                 </label>
                 <br />
-                <select name="resturant_type" id="resturant_cusine_select" multiple="multiple" required="required">
+                <!--<select name="resturant_type" id="resturant_cusine_select" multiple="multiple" required="required">
                     <option value="chinese">Chinese</option>
                     <option value="indian">Indian</option>
                     <option value="italian">Italian</option>
@@ -100,7 +114,7 @@
                 </label>
                 <br />
                 <textarea name="resturant_description" id="resturant_description_textarea" placeholder="Description of resturant" cols="40"
-                rows="10"></textarea>
+                rows="10"></textarea>-->
                 <br />
                 <input type="submit" value="Submit" />
             </form>
@@ -109,15 +123,14 @@
 
     <footer>
         <address>
-            <a href="./contact.html">Contact Me</a>
-            <br />
-            Eatr.com
-            <br />
-            123 Main St. W
-            <br />
-            Hamilton, Ontario
-        </address>
-        <h3>Author Tai Rui Tong, March 16, 2016</h3>
+        <a href="./contact.html ">Contact Me</a>
+        <br />
+        Eatr.com
+        |
+        123 Main St. W
+        |
+        Hamilton, Ontario
+        </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
 

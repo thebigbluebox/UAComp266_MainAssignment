@@ -1,0 +1,65 @@
+/*
+Image sourced from https://i.imgur.com/cqk5KcI.jpg
+*/
+#index_01 {
+    background-image: url("../_img/index_01.jpeg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#index_02 ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#index_02 ul li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/*
+Image sourced from http://images.huffingtonpost.com/2015-12-23-1450895141-5774790-food02.jpg
+*/
+#index_03 {
+    background-image:url("../_img/index_02.jpeg");
+    background-attachment:fixed;
+    background-position:center;
+    background-size: cover;
+}
+
+/*
+Image sourced from http://40.media.tumblr.com/4ba92bb98130bdcb849535d65ba6dc34/tumblr_nxej0071c71utf2xzo4_1280.jpg
+*/
+#index_05 {
+    background-image:url("../_img/index_03.jpeg");
+    background-attachment:fixed;
+    background-position:center;
+    background-size: cover;
+}
+
+#index_05 header {
+    justify-content: center;
+}
+
+#index_05 div {
+    flex-wrap: wrap;
+}
+
+#index_05_group_1 {
+    order:0;
+    flex-grow: 2;
+    width: 50%;
+}
+
+#index_05_group_2 {
+    order:1;
+    flex-grow: 1;
+    width: 50%;
+}
