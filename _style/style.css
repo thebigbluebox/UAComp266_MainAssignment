@@ -19,9 +19,25 @@ nav {
     background-color: #FDE04E;
 }
 
+main {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 header {
     height: auto;
     width: auto;
+    order: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+main form {
+  order: 1;
+  flex-grow: 1;
+  flex-basis: 100%;
 }
 
 a {
@@ -138,7 +154,7 @@ input[type="submit"].hover {
 
 .inverse {
     color:white;
-    
+
 }
 
 .bg_gray {

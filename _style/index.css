@@ -48,18 +48,17 @@ Image sourced from http://40.media.tumblr.com/4ba92bb98130bdcb849535d65ba6dc34/t
     justify-content: center;
 }
 
-#index_05 div {
+#index_05 ul {
     flex-wrap: wrap;
+    list-style: none;
 }
 
 #index_05_group_1 {
     order:0;
-    flex-grow: 2;
-    width: 50%;
+    flex-grow: 1;
 }
 
 #index_05_group_2 {
     order:1;
     flex-grow: 1;
-    width: 50%;
 }
