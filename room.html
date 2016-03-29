@@ -43,14 +43,14 @@
     </nav>
 
     <main class="site-content">
-        <section>
-            <header>
+        <section class="aligner">
+            <header class="aligner-item">
                 <h1>Room name</h1>
-                <h3>Pin: 1347</h3>
-                <h3>Location: Mississauga</h3>
-                <h3>Share this link to your friends <a href="" title="The link of to get to this room">Copy this link</a></h3>
+                <h4>Pin: 1347</h4>
+                <h4>Location: Mississauga</h4>
+                <h4>Share this link to your friends <a href="" title="The link of to get to this room">Copy this link</a></h4>
                 <!-- The form in the future will be connected to a Javascript library-->
-                <form name="join_room_form" action="" id="join_room">
+                <form name="join_room_form" action="" id="join_room" class="aligner-item">
                     <label for="name_input">
                         Name
                     </label>
@@ -75,68 +75,73 @@
                         <option value="egg">Egg Free</option>
                         <option value="gluten">Gluten Free</option>
                     </select>
+                    <br />
+                    <button type="submit" form="join_room" value="submit">Join</button>
                 </form>
-                <button type="submit" form="join_room" value="submit">Join</button>
             </header>
-        </section>
-        <section>
-            <header>
-                <h2>Participants</h2>
-            </header>
-            <table class="participants">
-                <caption>List of participants in the vote</caption>
-                <tr>
-                    <td></td>
-                    <th scope="col">Name</th>
-                    <th scope="col">Voted</th>
-                </tr>
-                <!-- Dynamically JS added participants in the following rows -->
-                <tr>
-                    <th scope="row">1</th>
-                    <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
-                    <td>Yes</td>
-                </tr>
-            </table>
-        </section>
-        <br />
-        <section>
-            <header>
-                <h2>Resturants</h2>
-            </header>
-            <label for="resturant_name_input">Add Resturant</label>
-            <input type="text" name="resturant_name" id="resturant_name_input" placeholder="Ex. McDonalds" />
-            <br />
-            <table class="resturants">
-                <caption>List of resturants in the vote</caption>
-                <tr>
-                    <td></td>
-                    <th scope="col">Name</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Food Criterias</th>
-                    <th scope="col">Cast Vote</th>
-                </tr>
-                <!-- Dynamically JS added participants in the following rows -->
-                <tr>
-                    <th scope="row">1</th>
-                    <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
-                    <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
-                    <td>
-                        <ul>
-                            <li>Fast food</li>
-                            <li>American</li>
-                            <li>Coffee</li>
-                        </ul>
-                    </td>
-                    <td class="votes">10</td>
-                </tr>
-            </table>
-            <div class="vote_diagram">
+            <section class="aligner-item">
+                <section class="aligner-item">
+                    <header>
+                        <h2>Resturants</h2>
+                    </header>
+                    <label for="resturant_name_input">Add Resturant</label>
+                    <br />
+                    <input type="text" name="resturant_name" id="resturant_name_input" placeholder="Ex. McDonalds" />
+                    <br />
+                    <table class="resturants">
+                        <caption>List of resturants in the vote</caption>
+                        <tr>
+                            <td></td>
+                            <th scope="col">Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Food Criterias</th>
+                            <th scope="col">Cast Vote</th>
+                        </tr>
+                        <!-- Dynamically JS added participants in the following rows -->
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
+                            <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
+                            <td>
+                                <ul class=tags-list container>
+                                    <li class="tag">Fast food</li>
+                                    <li class="tag">American</li>
+                                    <li class="tag">Coffee</li>
+                                </ul>
+                            </td>
+                            <td class="votes">10</td>
+                        </tr>
+                    </table>
+                    <div class="vote_diagram">
 
-            </div>
+                    </div>
+                </section>
+                <section class="aligner-item">
+                    <header>
+                        <h3>Participants</h3>
+                    </header>
+                    <table class="participants">
+                        <caption>List of participants in the vote</caption>
+                        <tr>
+                            <td></td>
+                            <th scope="col">Name</th>
+                            <th scope="col">Voted</th>
+                        </tr>
+                        <!-- Dynamically JS added participants in the following rows -->
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </section>
+                <br />
+            </section>
         </section>
+
     </main>
 
-     <footer>
+    <footer>
         <address>
         <a href="./contact.html ">Contact Me</a>
         <br />
