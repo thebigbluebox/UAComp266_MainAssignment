@@ -83,6 +83,7 @@
                     <header>
                         <h2>Restaurants</h2>
                     </header>
+                    <!-- Resturant entering just for show right now-->
                     <label for="restaurant_name_input">Add restaurant</label>
                     <br />
                     <input type="text" name="restaurant_name" id="restaurant_name_input" placeholder="Ex. McDonalds" />
@@ -90,6 +91,10 @@
                     <label for="restaurant_location_input">Add Location</label>
                     <br />
                     <input type="text" name="restaurant_location" id="restaurant_location_input" placeholder="Ex. Mississauga" />
+                    <br />
+                    <label for="restaurant_foodCriteria_input">Food criteria</label>
+                    <br />
+                    <input type="text" name="restaurant_foodCriteria" id="restaurant_foodCriteria_input" placeholder="Ex. Vegan, Vegetarian" />
                     <br />
                     <table class="restaurants" id="restaurantTable">
                         <caption>List of restaurants in the vote</caption>
@@ -101,7 +106,7 @@
                             <th scope="col">Cast Vote</th>
                         </tr>
                         <!-- Dynamically JS added participants in the following rows -->
-                        <tr>
+                        <tr class="restaurantRow">
                             <th scope="row">1</th>
                             <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
                             <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
