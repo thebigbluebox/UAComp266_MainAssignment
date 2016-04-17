@@ -1,4 +1,5 @@
 "use strict";
+//The following keys would be dynamic
 var roomKey = "-KEydI09pWju-abiTzpG";
 $(document).ready(function() {
     var LEADERBOARD_SIZE = 5;
@@ -39,7 +40,6 @@ $(document).ready(function() {
             var selectionId = $(this).attr("id");
             var upvotesRef = fireBaseRef.child("rooms").child(roomKey).child("restaurantList").child(selectionId).child("vote"); 
             upvotesRef.transaction(function(current_value) {
-                console.log(current_value);
                 return (current_value || 0) + 1;
             });
         });
@@ -55,7 +55,6 @@ $(document).ready(function() {
 
     // Helper function to handle a score object being removed; just removes the corresponding table row.
     function handleRestaurantRemoved(restaurantSnapshot) {
-        console.log("44");
         if (typeof (restaurantSnapshot) === "Undefined") {
             return;
         }
@@ -75,7 +74,6 @@ $(document).ready(function() {
 
     // Add a callback to handle when a score is removed
     restaurantListView.on('child_removed', function(oldrestaurantSnapshot) {
-        console.log("64");
         handleRestaurantRemoved(oldrestaurantSnapshot);
     });
 
@@ -108,10 +106,7 @@ $(document).ready(function() {
             if (name.length === 0)
                 return;
 
-            var userScoreRef = restaurantListRef.child(name);
-
-            // Use setWithPriority to put the name / score in Firebase, and set the priority to be the score.
-            userScoreRef.push({ name: name, vote: newVote, location: location, criteria: foodCriterias }, newVote);
+            restaurantListRef.push({ name: name, vote: newVote, location: location, criteria: foodCriterias });
         }
     });
 
