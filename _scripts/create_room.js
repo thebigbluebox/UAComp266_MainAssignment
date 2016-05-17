@@ -19,7 +19,7 @@ $("#room_submit").click(function(e) {
     var room = {};
     room.roomName = $("#room_name_input").val();
     room.roomLocation = $("#room_location_input").val();
-    room.publicRoomBoolean = $("#room_open_checkbox").prop("checked");
+    room.privateRoomBoolean = $("#room_open_checkbox").prop("checked");
     room.roomPin = $("#room_pin_input").val();
     var roomId = {};
     

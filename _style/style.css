@@ -134,6 +134,7 @@ To create a better looking text input
 input,
 input,
 select,
+button,
 textarea {
   padding: 10px;
   border: solid 5px #c9c9c9;
@@ -145,7 +146,9 @@ input.focus,
 select:focus,
 select.focus,
 textarea:focus,
-textarea.focus {
+textarea.focus,
+button:focus,
+button.focus {
   border: solid 5px #969696;
 }
 

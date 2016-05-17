@@ -18,7 +18,6 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./_style/font-awesome.min.css">
     <link rel="stylesheet" href="./_style/style.css" />
-    <link rel="stylesheet" href="./_style/create-resturant.css" />
 
 </head>
 
@@ -35,10 +34,10 @@
         </div>
         <div class="nav_right nav_bar">
             <ul>
-                <li><a href="./create_resturant.html">Create Resturant</a></li>
+                <li><a href="./create_restaurant.html">Create Resturant</a></li>
                 <li><a href="./create_room.html">Create Room</a></li>
                 <li><a href="./list_rooms.html">List Open Rooms</a></li>
-                <li><a href="./find_resturants.html">Find Resturants</a></li>
+                <li><a href="./find_restaurants.html">Find Resturants</a></li>
             </ul>
         </div>
     </nav>
@@ -54,12 +53,12 @@
                     <br />
                     <input type="text" name="search_text" id="search_text_input" placeholder="Ex. Burger King" />
                     <br />
-                    <label for="resturant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
+                    <label for="restaurant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
                     to dine at">
                         By Cusine Type
                     </label>
                     <br />
-                    <select name="resturant_type" id="resturant_cusine_select" multiple="multiple">
+                    <select name="resturant_type" id="restaurant_cusine_select" multiple="multiple">
                         <option value="chinese">Chinese</option>
                         <option value="indian">Indian</option>
                         <option value="italian">Italian</option>
@@ -67,12 +66,12 @@
                         <option value="american">American</option>
                     </select>
                     <br />
-                    <label for="resturant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
+                    <label for="restaurant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
                     fulfil the dietary restriction">
                         Resturant Dietary Restriction
                     </label>
                     <br />
-                    <select name="resturant_dietary_restriction" id="resturant_dietary_restriction_select" multiple="multiple">
+                    <select name="resturant_dietary_restriction" id="restaurant_dietary_restriction_select" multiple="multiple">
                         <option value="vegan">Vegan</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="halal">Halal</option>
@@ -130,5 +129,9 @@
         </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
-
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="./_scripts/jquery-1.12.2.min.js"></script>
+<script src="./_scripts/cusines_options.js"></script>
+<script src="./_scripts/dietary_options.js"></script>
+<script src="./_scripts/find_restaurant.js"></script>
 </html>

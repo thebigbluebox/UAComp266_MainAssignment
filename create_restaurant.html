@@ -36,7 +36,7 @@
                 <li><a href="./create_restaurant.html">Create restaurant</a></li>
                 <li><a href="./create_room.html">Create Room</a></li>
                 <li><a href="./list_rooms.html">List Open Rooms</a></li>
-                <li><a href="./find_restaurant.html">Find restaurants</a></li>
+                <li><a href="./find_restaurants.html">Find restaurants</a></li>
             </ul>
         </div>
     </nav>
@@ -52,13 +52,21 @@
                     restaurant Name*
                 </label>
                 <br />
-                <input type="text" name="restaurant_name" id="restaurant_name_input" placeholder="Ex. My restaurant" required="required" />
+                <input type="text" name="restaurant_name" id="restaurant_name_input" placeholder="Ex. My restaurant" required="required"
+                />
                 <br />
                 <label for="restaurant_location_input">
                     restaurant Location*
                 </label>
                 <br />
-                <input type="text" name="restaurant_location" id="restaurant_location_input" placeholder="Ex. 142 Mississauga Rd" required="required" />
+                <input type="text" name="restaurant_location" id="restaurant_location_input" placeholder="Ex. 142 Mississauga Rd" required="required"
+                />
+                <br />
+                <label for="restaurant_website_input">
+                    restaurant Site
+                </label>
+                <br />
+                <input type="text" name="restaurant_website" id="restaurant_website_input" placeholder="www.mcdonalds.ca" />
                 <br />
                 <label for="restaurant_cusine_select" title="Selecting a restaurant type will allow users to search by the type of cusine they would like
                 to dine at">
@@ -102,7 +110,8 @@
                     Other Dietary Restriction Type, press enter to add
                 </label>
                 <br />
-                <input type="text" name="other_restaurant_dietary_restriction" id="other_restaurant_dietary_restriction_input" placeholder="Ex. Kiwi" />
+                <input type="text" name="other_restaurant_dietary_restriction" id="other_restaurant_dietary_restriction_input" placeholder="Ex. Kiwi"
+                />
                 <br />
                 <ul class="tags_list">
                     <li class="tag">Dynamic List of tags will go here</li>
@@ -113,11 +122,29 @@
                 </label>
                 <br />
                 <textarea name="restaurant_description" id="restaurant_description_textarea" placeholder="Description of restaurant" cols="40"
-                rows="10"></textarea>
+                    rows="10"></textarea>
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="button" value="Submit" id="restaurant_submit" />
             </form>
+            <div class="aligner-item" id="confirmation_pane" style="display:none">
+                <h4>Restaurant Name</h4>
+                <p id="confirm_rest_name"></p>
+                <h4>Restaurant Location</h4>
+                <p id="confirm_rest_location"></p>
+                <h4>Website</h4>
+                <p id="confirm_rest_website"></p>
+                <h4>Type of Cusine</h4>
+                <p id="confirm_rest_cusine"></p>
+                <h4>Dietary Restrictions</h4>
+                <p id="confirm_rest_diet"></p>
+                <h4>Description</h4>
+                <p id="confirm_rest_description"></p>
+                <button id="edit_button">Edit</button>
+                <button id="confirm_button">Confirm</button>
+                <button id="delete_button">Delete</button>
+            </div>
         </section>
+
     </main>
 
     <footer>
@@ -132,5 +159,10 @@
         </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="./_scripts/jquery-1.12.2.min.js"></script>
+<script src="./_scripts/cusines_options.js"></script>
+<script src="./_scripts/dietary_options.js"></script>
+<script src="./_scripts/create_restaurant.js"></script>
 
 </html>

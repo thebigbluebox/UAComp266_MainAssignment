@@ -44,30 +44,31 @@
     <main class="site-content">
         <section class="aligner">
             <header class="aligner-item">
-                <h1>Room name</h1>
-                <h4>Pin: 1347</h4>
-                <h4>Location: Mississauga</h4>
-                <h4>Share this link to your friends <a href="" title="The link of to get to this room">Copy this link</a></h4>
+                <h1 id="room_name">Room name</h1>
+                <h4 id="room_pin">Pin:</h4>
+                <h4 id="room_location">Location</h4>
+                <h4>Share this link to your friends <a href="" title="The link of to get to this room" id="share_link">Copy this link</a></h4>
                 <!-- The form in the future will be connected to a Javascript library-->
+                 <p id="join_error" class="error"></p>
                 <form name="join_room_form" action="#" id="join_room" class="aligner-item">
                     <label for="name_input">
                         Name
                     </label>
                     <br />
-                    <input type="text" name="name" id="name_input" placeholder="Ex. Marie An" />
+                    <input type="text" name="name" id="join_name_input" placeholder="Ex. Marie An" required="required"/>
                     <br />
                     <label for="email_input">
                         Email
                     </label>
                     <br />
-                    <input type="email" name="email" id="email_input" placeholder="Ex. terry@m.com" />
+                    <input type="email" name="email" id="join_email_input" placeholder="Ex. terry@m.com" required="required"/>
                     <br />
                     <label for="restaurant_dietary_restriction_select" title="If you have any dietary restrictions you can add that to the options,
                     the dietary restrictions will not be shown to everyone, it will however affect the number of restaurants available">
                         Dietary Restriction
                     </label>
                     <br />
-                    <select name="restaurant_dietary_restriction" id="restaurant_dietary_restriction_select" multiple="multiple">
+                    <select name="restaurant_dietary_restriction" id="join_restaurant_dietary_restriction_select" multiple="multiple">
                         <option value="vegan">Vegan</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="halal">Halal</option>
@@ -75,7 +76,7 @@
                         <option value="gluten">Gluten Free</option>
                     </select>
                     <br />
-                    <button type="submit" form="join_room" value="submit">Join</button>
+                    <button type="button" onclick="" id="join_room_button">Join</button>
                 </form>
             </header>
             <div class="aligner-item">
@@ -106,7 +107,7 @@
                             <th scope="col">Cast Vote</th>
                         </tr>
                         <!-- Dynamically JS added participants in the following rows -->
-                        <tr class="restaurantRow">
+                        <!--<tr class="restaurantRow">
                             <th scope="row">1</th>
                             <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
                             <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
@@ -118,7 +119,7 @@
                                 </ul>
                             </td>
                             <td class="votes">10</td>
-                        </tr>
+                        </tr>-->
                     </table>
                     <div class="vote_diagram">
 
@@ -128,19 +129,20 @@
                     <header>
                         <h3>Participants</h3>
                     </header>
-                    <table class="participants">
+                    <table class="participants" id="participantTable">
                         <caption>List of participants in the vote</caption>
                         <tr>
                             <td></td>
                             <th scope="col">Name</th>
-                            <th scope="col">Voted</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Allergen</th>
                         </tr>
                         <!-- Dynamically JS added participants in the following rows -->
-                        <tr>
+                        <!--<tr>
                             <th scope="row">1</th>
                             <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
                             <td>Yes</td>
-                        </tr>
+                        </tr>-->
                     </table>
                 </section>
                 <br />
@@ -163,5 +165,7 @@
 </body>
 <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 <script src="./_scripts/jquery-1.12.2.min.js"></script>
-<script src="./_scripts/edited_critque.js"></script>
+<script src="./_scripts/essential_room.js"></script>
+<script src="./_scripts/participants_room.js"></script>
+<script src="./_scripts/restaurants_room.js"></script>
 </html>
