@@ -2,7 +2,7 @@
 
 var fireBaseRef = new Firebase('torrid-fire-6240.firebaseIO.com');
 var restaurantsRef = fireBaseRef.child("restaurants");
-
+var elements;
 $(document).ready(function () {
     var RESTAURANTLIST_SIZE = 100;
     var restaurantListRef = restaurantsRef;
@@ -75,26 +75,34 @@ $(document).ready(function () {
     restaurantListView.on('child_moved', changedCallback);
     restaurantListView.on('child_changed', changedCallback);
     
-    $("#restaurant_foodCriteria_input").keypress(function (e) {
-        if (e.keyCode == 13) {
-            var newVote = 1;
-            var name = $("#restaurant_name_input").val();
-            $("#scoreInput").val("");
-
-            var location = $("#restaurant_location_input").val();
-            $("#restaurant_location_input").val("");
-
-            var foodCriterias = $("#restaurant_foodCriteria_input").val();
-            $("#restaurant_foodCriteria_input").val("");
-
-            if (name.length === 0)
-                return;
-
-            restaurantListRef.push({ name: name, vote: newVote, location: location, criteria: foodCriterias });
-        }
-    });
+    function buildQueryList() {
+        var searchString = $("#search_text_input").val().split(" ");
+        var cusines = [];
+        $("#restaurant_cusine_select :selected").each(function (i, selected) { cusines[i] = $(selected).val(); });
+        var diets = [];
+        $("#restaurant_dietary_restriction_select :selected").each(function (i, selected) { diets[i] = $(selected).val(); });
+        
+        searchString = searchString.concat(cusines,diets);
+        console.log(searchString);
+        return searchString;
+    }
     
     function find() {
+        var searchArray = buildQueryList();
+        var searchSelector = "#resturants_list tr > ";
+        for(var item in searchArray) {
+            // remenber to trim the last two characters of + and space
+            searchSelector += "td:contains(" + searchArray[item] + ") + ";
+        }
+        searchSelector = searchSelector.substring(0,searchSelector.length-2);
+        elements = $(searchSelector).parent().attr("class","selected");;
         
+        
+        $('#resturants_list').find('tr').not('.selected').hide();
     }
+    
+    $("#search_submit").click(function(e){
+       find(); 
+    });
+    
 });
