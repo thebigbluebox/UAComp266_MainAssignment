@@ -29,24 +29,28 @@ $(document).ready(function () {
     roomRef = fireBaseRef.child("rooms").child(roomKey);
     
     var roomName = '';
-    var pinNumber = 0;
+    var roomCode = 0;
     var privateRoom = false;
     var roomLocation = '';
 
     roomRef.on("value", function (snapshot) {
         roomName = snapshot.val().roomName;
-        pinNumber = snapshot.val().roomPin;
-        privateRoom = Boolean(snapshot.val().privateRoomBoolean);
+        // pinNumber = snapshot.val().roomPin;
+        // privateRoom = Boolean(snapshot.val().privateRoomBoolean);
         roomLocation = snapshot.val().roomLocation;
 
         $("#room_name").html(roomName);
-        if (privateRoom) {
-            $("#room_pin").html('Pin:' + pinNumber);
-        } else {
-            $("#room_pin").html('Public');
-        }
+        // if (privateRoom) {
+            // $("#room_pin").html('Pin:' + pinNumber);
+        // } else {
+            $("#room_pin").html(roomKey);
+        // }
         $("#room_location").html(roomLocation);
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
 });
+
+function toggleRestaurantSearch() {
+    $("#restaurant_search").toggle();
+}

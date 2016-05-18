@@ -1,10 +1,11 @@
+var restaurantListRef;
 $(document).ready(function () {
     var RESTAURANTLIST_SIZE = 5;
-    var restaurantListRef = roomRef.child("restaurantList");
+    restaurantListRef = roomRef.child("restaurantList");
     var restaurantHtmlForPath = {};
-    
+
     var restaurantListView = restaurantListRef.limitToLast(RESTAURANTLIST_SIZE);
-    
+
     function handleRestaurantAdded(restaurantSnapshot, prevRestaurantName) {
         if (typeof (restaurantSnapshot) === "Undefined" || typeof (prevrestaurantName) === "Undefined") {
             return;
@@ -13,6 +14,7 @@ $(document).ready(function () {
         newrestaurantRow.append($("<th/>"));
         newrestaurantRow.append($("<td/>").append($("<em/>").text(restaurantSnapshot.val().name)));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().location));
+        newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().cusines));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().criteria));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().vote));
 
@@ -68,7 +70,10 @@ $(document).ready(function () {
     };
     restaurantListView.on('child_moved', changedCallback);
     restaurantListView.on('child_changed', changedCallback);
-    
+
+
+
+
     $("#restaurant_foodCriteria_input").keypress(function (e) {
         if (e.keyCode == 13) {
             var newVote = 1;
@@ -83,8 +88,25 @@ $(document).ready(function () {
 
             if (name.length === 0)
                 return;
-
-            restaurantListRef.push({ name: name, vote: newVote, location: location, criteria: foodCriterias });
+            pushRestaurant(name, newVote, location, foodCriterias, []);
         }
     });
 });
+
+function pushRestaurant(name, vote, location, criteria, cusines) {
+    console.log(name, vote, location, criteria, cusines);
+    var criteriaSane = criteria | [];
+    var cusinesSane = cusines | [];
+    restaurantListRef.push({ name: name, vote: vote, location: location, criteria: criteriaSane, cusines: cusines });
+}
+
+function addRestaurant(restaurantKey) {
+    var restaurant = fireBaseRef.child("restaurants").child(restaurantKey);
+    console.log("restaurant key", restaurantKey);
+    restaurant.on('value', function (dataSnapshot) {
+        console.log("here", dataSnapshot.val().name);
+        pushRestaurant(dataSnapshot.val().name, 1, dataSnapshot.val().location, dataSnapshot.val().diet, dataSnapshot.val().cusines);
+    }, function (errorObject) {
+        console.log("Error with query " + errorObject.code);
+    });
+}

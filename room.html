@@ -49,19 +49,19 @@
                 <h4 id="room_location">Location</h4>
                 <h4>Share this link to your friends <a href="" title="The link of to get to this room" id="share_link">Copy this link</a></h4>
                 <!-- The form in the future will be connected to a Javascript library-->
-                 <p id="join_error" class="error"></p>
+                <p id="join_error" class="error"></p>
                 <form name="join_room_form" action="#" id="join_room" class="aligner-item">
                     <label for="name_input">
                         Name
                     </label>
                     <br />
-                    <input type="text" name="name" id="join_name_input" placeholder="Ex. Marie An" required="required"/>
+                    <input type="text" name="name" id="join_name_input" placeholder="Ex. Marie An" required="required" />
                     <br />
                     <label for="email_input">
                         Email
                     </label>
                     <br />
-                    <input type="email" name="email" id="join_email_input" placeholder="Ex. terry@m.com" required="required"/>
+                    <input type="email" name="email" id="join_email_input" placeholder="Ex. terry@m.com" required="required" />
                     <br />
                     <label for="restaurant_dietary_restriction_select" title="If you have any dietary restrictions you can add that to the options,
                     the dietary restrictions will not be shown to everyone, it will however affect the number of restaurants available">
@@ -79,13 +79,68 @@
                     <button type="button" onclick="" id="join_room_button">Join</button>
                 </form>
             </header>
-            <div class="aligner-item">
+            <div class="aligner-item" style="padding-top:50px">
                 <section class="aligner-item">
                     <header>
                         <h2>Restaurants</h2>
+                        <button onclick="toggleRestaurantSearch()">Search</button>
                     </header>
+                    <section class="aligner" id="restaurant_search">
+                        <header class="aligner-item">
+                            <h4>Resutrants List</h4>
+                            <form name="resturant_search_form" action="#" class="aligner-item">
+                                <label for="search_text_input">
+                        Search
+                    </label>
+                                <input type="text" name="search_text" id="search_text_input" placeholder="Ex. Burger King" />
+                                <br />
+                                <label for="restaurant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
+                    to dine at">
+                        By Cusine Type
+                    </label>
+                                <select name="resturant_type" id="restaurant_cusine_select" multiple="multiple">
+                        <option value="chinese">Chinese</option>
+                        <option value="indian">Indian</option>
+                        <option value="italian">Italian</option>
+                        <option value="korean">Korean</option>
+                        <option value="american">American</option>
+                    </select>
+                                <label for="restaurant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
+                    fulfil the dietary restriction">
+                        Resturant Dietary Restriction
+                    </label>
+                                <select name="resturant_dietary_restriction" id="restaurant_dietary_restriction_select" multiple="multiple">
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="halal">Halal</option>
+                        <option value="egg">Egg Free</option>
+                        <option value="gluten">Gluten Free</option>
+                    </select>
+                    <br />
+                                <input type="button" id="search_submit" value="Submit" />
+                            </form>
+                        </header>
+
+
+                        <table id="resturants_list" class="aligner-item">
+                            <caption>Resturants List Table</caption>
+                            <tr class="selected">
+                                <td></td>
+                                <th scope="col">Resturant Name</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Cusine</th>
+                                <th scope="col">Dietary Restriction</th>
+                            </tr>
+                            <!-- The table will be generated using javascript while
+                      Retrieving all the data-->
+                            
+                        </table>
+                    </section>
+
                     <!-- Resturant entering just for show right now-->
-                    <label for="restaurant_name_input">Add restaurant</label>
+
+                    <!--<label for="restaurant_name_input">Add restaurant</label>
                     <br />
                     <input type="text" name="restaurant_name" id="restaurant_name_input" placeholder="Ex. McDonalds" />
                     <br />
@@ -96,34 +151,19 @@
                     <label for="restaurant_foodCriteria_input">Food criteria</label>
                     <br />
                     <input type="text" name="restaurant_foodCriteria" id="restaurant_foodCriteria_input" placeholder="Ex. Vegan, Vegetarian" />
-                    <br />
+                    <br />-->
                     <table class="restaurants" id="restaurantTable">
                         <caption>List of restaurants in the vote</caption>
                         <tr>
                             <td></td>
                             <th scope="col">Name</th>
                             <th scope="col">Location</th>
+                            <th scope="col">Cuisine</th>
                             <th scope="col">Food Criterias</th>
                             <th scope="col">Cast Vote</th>
                         </tr>
                         <!-- Dynamically JS added participants in the following rows -->
-                        <!--<tr class="restaurantRow">
-                            <th scope="row">1</th>
-                            <td><a href="http://www.mcdonalds.ca" target="_blank" title="McDonalds Canada Website">Mcdonalds Canada</a></td>
-                            <td><address>Mcdonalds 37 Britannia St, Mississauga, Ontario</address></td>
-                            <td>
-                                <ul class="tags-list">
-                                    <li class="tag">Fast food</li>
-                                    <li class="tag">American</li>
-                                    <li class="tag">Coffee</li>
-                                </ul>
-                            </td>
-                            <td class="votes">10</td>
-                        </tr>-->
                     </table>
-                    <div class="vote_diagram">
-
-                    </div>
                 </section>
                 <section class="aligner-item">
                     <header>
@@ -138,11 +178,6 @@
                             <th scope="col">Allergen</th>
                         </tr>
                         <!-- Dynamically JS added participants in the following rows -->
-                        <!--<tr>
-                            <th scope="row">1</th>
-                            <td><a href="" title="Terry Tong's Profile">Terry Tong</a></td>
-                            <td>Yes</td>
-                        </tr>-->
                     </table>
                 </section>
                 <br />
@@ -168,4 +203,8 @@
 <script src="./_scripts/essential_room.js"></script>
 <script src="./_scripts/participants_room.js"></script>
 <script src="./_scripts/restaurants_room.js"></script>
+<script src="./_scripts/cusines_options.js"></script>
+<script src="./_scripts/dietary_options.js"></script>
+<script src="./_scripts/find_restaurant.js"></script>
+
 </html>

@@ -19,12 +19,12 @@ $("#room_submit").click(function(e) {
     var room = {};
     room.roomName = $("#room_name_input").val();
     room.roomLocation = $("#room_location_input").val();
-    room.privateRoomBoolean = $("#room_open_checkbox").prop("checked");
-    room.roomPin = $("#room_pin_input").val();
+    room.privateRoomBoolean = $("#room_open_checkbox").prop("checked") | false;
+    room.roomPin = $("#room_pin_input").val() | 0;
     var roomId = {};
     
     if(room.roomName !== "" && room.roomLocation !== "") {
-        if(room.publicRoomBoolean == true && room.roomPin !== 0) {
+        if(room.privateRoomBoolean == true && room.roomPin !== 0) {
             console.log("pushing non regular");
             roomId = roomRef.push(room)
         } else {
