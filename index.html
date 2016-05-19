@@ -64,12 +64,12 @@ about what Eatr.com is, and give them a easy way to start using it
                     <i class="fa fa-pencil-square-o fa-4x"></i>
                 </li>
                 <li>
-                    <form name="index_roomcode_form" action="room.html" method="get">
+                    <form name="index_roomcode_form" action="#">
                         <h3 class="link_index">
                             <label for="room_code">Join an existing room</label>
                         </h3>
                         <br />
-                        <input type="text" id="room_code" class="h_center" name="room" placeholder="Ex. 123456" />
+                        <input type="text" id="room_code" name="room" class="h_center"  placeholder="Ex. 123456" />
                     </form>
                 </li>
                 <li class="left_border">
@@ -133,7 +133,9 @@ about what Eatr.com is, and give them a easy way to start using it
     </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
-<script src="./_scripts/jquery-1.12.2.min.js"></script>
-<script src="./_scripts/index.js"></script>
+<!-- JQuery Library -->
+<script src="./_lib/jquery-2.2.1.min.js"></script>
+<!-- Index page auto navigate script -->
+<script src="./_scripts/views/index.js"></script>
 
 </html>

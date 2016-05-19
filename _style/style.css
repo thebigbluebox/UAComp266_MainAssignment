@@ -338,3 +338,7 @@ different portions
     width: 60%;
     height: auto;
 }
+
+.room_only {
+    display:none;
+}

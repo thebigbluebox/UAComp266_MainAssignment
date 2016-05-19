@@ -6,13 +6,13 @@
     Module 2
     Version 1.0
 
-    find_resturants.html
-    This page will allow users to find resturants within the resturant database, and will be able to filter through different
-    dietary restrictions and cusine types.
+    find_restaurants.html
+    This page will allow users to find restaurants within the restaurant database, and will be able to filter through different
+    dietary restrictions and cuisine types.
 -->
 
 <head>
-    <title>Eatr - Find Resturant</title>
+    <title>Eatr - Find restaurant</title>
     <!-- Stylesheet -->
     <link href='https://fonts.googleapis.com/css?family=Dosis:500,400' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
@@ -34,10 +34,10 @@
         </div>
         <div class="nav_right nav_bar">
             <ul>
-                <li><a href="./create_restaurant.html">Create Resturant</a></li>
+                <li><a href="./create_restaurant.html">Create restaurant</a></li>
                 <li><a href="./create_room.html">Create Room</a></li>
                 <li><a href="./list_rooms.html">List Open Rooms</a></li>
-                <li><a href="./find_restaurants.html">Find Resturants</a></li>
+                <li><a href="./find_restaurants.html">Find restaurants</a></li>
             </ul>
         </div>
     </nav>
@@ -46,19 +46,19 @@
         <section class="aligner">
             <header class="aligner-item">
                 <h1>Resutrants List</h1>
-                <form name="resturant_search_form" action="#" class="aligner-item">
-                    <label for="search_text_input">
+                <form name="restaurant_search_form" action="#" class="aligner-item">
+                    <label for="restaurant_search_form_searchtext_input">
                         Search
                     </label>
                     <br />
-                    <input type="text" name="search_text" id="search_text_input" placeholder="Ex. Burger King" />
+                    <input type="text" name="search_text" id="restaurant_search_form_searchtext_input" placeholder="Ex. Burger King" />
                     <br />
-                    <label for="restaurant_cusine_select" title="Selecting a resturant type will allow users to search by the type of cusine they would like
-                    to dine at">
-                        By Cusine Type
+                    <label for="restaurant_search_form_cuisine_select" title="Selecting a restaurant type will allow users to search by the type of Cuisine they would like
+                                to dine at">
+                        By Cuisine Type
                     </label>
                     <br />
-                    <select name="resturant_type" id="restaurant_cusine_select" multiple="multiple">
+                    <select name="cuisine" id="restaurant_search_form_cuisine_select" class="cuisine_select" multiple="multiple">
                         <option value="chinese">Chinese</option>
                         <option value="indian">Indian</option>
                         <option value="italian">Italian</option>
@@ -66,12 +66,12 @@
                         <option value="american">American</option>
                     </select>
                     <br />
-                    <label for="restaurant_dietary_restriction_select" title="Selecting a resturant dietary restriction will allow you to search by resturants that
+                    <label for="restaurant_search_form_dietary_restriction_select" title="Selecting a restaurant dietary restriction will allow you to search by restaurants that
                     fulfil the dietary restriction">
-                        Resturant Dietary Restriction
+                        By Dietary Restriction
                     </label>
                     <br />
-                    <select name="resturant_dietary_restriction" id="restaurant_dietary_restriction_select" multiple="multiple">
+                    <select name="dietary_restriction" id="restaurant_search_form_dietary_restriction_select" class="dietary_restriction_select" multiple="multiple">
                         <option value="vegan">Vegan</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="halal">Halal</option>
@@ -79,20 +79,20 @@
                         <option value="gluten">Gluten Free</option>
                     </select>
                     <br />
-                    <input type="button" id="search_submit" value="Submit" />
+                    <input type="button" onclick="find()" value="Search" />
                 </form>
             </header>
 
-
-            <table id="resturants_list" class="aligner-item">
-                <caption>Resturants List Table</caption>
+            <!-- Restaurant Search List will be populated within this table -->
+            <table id="restaurants_list" class="aligner-item">
+                <caption>restaurants List Table</caption>
                 <tr class="selected">
                     <td></td>
-                    <th scope="col">Resturant Name</th>
+                    <th scope="col">Restaurant</th>
                     <th scope="col">Location</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Cusine</th>
-                    <th scope="col">Dietary Restriction</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">Cuisine</th>
+                    <th scope="col">Dietary Restrictions</th>
                 </tr>
                 <!-- The table will be generated using javascript while
                       Retrieving all the data-->
@@ -112,9 +112,17 @@
         </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
+<!-- FireBase Library -->
 <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-<script src="./_scripts/jquery-1.12.2.min.js"></script>
-<script src="./_scripts/cusines_options.js"></script>
-<script src="./_scripts/dietary_options.js"></script>
-<script src="./_scripts/find_restaurant.js"></script>
+<!-- JQuery Library -->
+<script src="./_lib/jquery-2.2.1.min.js"></script>
+<!-- Main firebase connection -->
+<script src="./_scripts/core/firebase.js"></script>
+<!-- Cuisine Options FireBase -->
+<script src="./_scripts/core/cuisines_options.js"></script>
+<!-- Dietary Restrictions Options FireBase -->
+<script src="./_scripts/core/dietary_options.js"></script>
+<!-- Find Restaurant Page -->
+<script src="./_scripts/views/find_restaurant.js"></script>
+
 </html>

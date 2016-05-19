@@ -18,6 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./_style/font-awesome.min.css">
     <link rel="stylesheet" href="./_style/style.css" />
+    <link rel="stylesheet" href="./_style/gmap.css" />
 </head>
 
 <body class="site">
@@ -44,36 +45,37 @@
     <main class="site-content">
         <section class="aligner">
             <header class="aligner-item">
-                <h1>Create New restaurant</h1>
+                <h1>Create New Restaurant</h1>
             </header>
             <!-- Currently the form does not contain any actions because this will be processed by the Javascript libraries -->
             <form name="new_restaurant_form" action="#" class="aligner-item">
-                <label for="restaurant_name_input">
-                    restaurant Name*
+                <label for="new_restaurant_form_name_input">
+                    Restaurant Name*
                 </label>
                 <br />
-                <input type="text" name="restaurant_name" id="restaurant_name_input" placeholder="Ex. My restaurant" required="required"
-                />
+                <input type="text" name="name" id="new_restaurant_form_name_input" placeholder="Ex. My restaurant" required="required" />
                 <br />
-                <label for="restaurant_location_input">
-                    restaurant Location*
+                <label for="pac-input">
+                    Restaurant Location*
                 </label>
                 <br />
-                <input type="text" name="restaurant_location" id="restaurant_location_input" placeholder="Ex. 142 Mississauga Rd" required="required"
-                />
+                <div>
+                    <input id="pac-input" class="controls" type="text" placeholder="Enter a location" required="required">
+                    <div id="map"></div>
+                </div>
                 <br />
-                <label for="restaurant_website_input">
-                    restaurant Site
+                <label for="new_restaurant_form_website_input">
+                    Restaurant Site
                 </label>
                 <br />
-                <input type="text" name="restaurant_website" id="restaurant_website_input" placeholder="www.mcdonalds.ca" />
+                <input type="text" name="website" id="new_restaurant_form_website_input" placeholder="www.mcdonalds.ca" />
                 <br />
-                <label for="restaurant_cusine_select" title="Selecting a restaurant type will allow users to search by the type of cusine they would like
+                <label for="new_restaurant_form_cuisine_select" title="Selecting a restaurant cuisine will allow users to search by the type of cuisine they would like
                 to dine at">
-                    Cusine Type
+                    Cuisine Type*
                 </label>
                 <br />
-                <select name="restaurant_type" id="restaurant_cusine_select" multiple="multiple" required="required">
+                <select name="cuisine" id="new_restaurant_form_cuisine_select" class="cuisine_select" multiple="multiple" required="required">
                     <option value="chinese">Chinese</option>
                     <option value="indian">Indian</option>
                     <option value="italian">Italian</option>
@@ -81,23 +83,20 @@
                     <option value="american">American</option>
                 </select>
                 <br />
-                <label for="other_restaurant_type_input" title="If the cusine type isn't currently located in the options above
-                you can enter the type of cusine that best fits your restaurant below">
+                <label for="new_restaurant_form_other_cuisine_input" title="If the cuisine type isn't currently located in the options above
+                you can enter the type of cuisine that best fits your restaurant below">
                     Other restaurant Type, press enter to add
                 </label>
                 <br />
-                <input type="text" name="other_restaurant_type" id="other_restaurant_type_input" placeholder="Ex. Asian Fusion" />
+                <input type="text" name="other_cuisine" id="new_restaurant_form_other_cuisine_input" placeholder="Ex. Asian Fusion" />
                 <br />
-                <!--<ul class="tags_list">
-                    <li class="tag">Dynamic List of tags will go here</li>
-                </ul>-->
-                <br />
-                <label for="restaurant_dietary_restriction_select" title="If your restaurant caters to a specific type of dietary restriction, you can
+                <label for="new_restaurant_form_dietary_restriction_select" title="If your restaurant caters to a specific type of dietary restriction, you can
                 add that to your restaurant profile. Please make sure that this is accurate to prevent users from getting harmed">
                     restaurant Dietary Restriction
                 </label>
                 <br />
-                <select name="restaurant_dietary_restriction" id="restaurant_dietary_restriction_select" multiple="multiple">
+                <select name="dietary_restriction" id="new_restaurant_form_dietary_restriction_select" class="dietary_restriction_select"
+                    multiple="multiple">
                     <option value="vegan">Vegan</option>
                     <option value="vegetarian">Vegetarian</option>
                     <option value="halal">Halal</option>
@@ -105,43 +104,52 @@
                     <option value="gluten">Gluten Free</option>
                 </select>
                 <br />
-                <label for="other_restaurant_dietary_restriction_input" title="If the dietary restriction isn't currently located in the options above
+                <label for="new_restaurant_form_other_dietary_restriction_input" title="If the dietary restriction isn't currently located in the options above
                 you can enter the type of dietary restriction that best fits your restaurant below'">
                     Other Dietary Restriction Type, press enter to add
                 </label>
                 <br />
-                <input type="text" name="other_restaurant_dietary_restriction" id="other_restaurant_dietary_restriction_input" placeholder="Ex. Kiwi"
+                <input type="text" name="other_dietary_restriction" id="new_restaurant_form_other_dietary_restriction_input" placeholder="Ex. Kiwi"
                 />
                 <br />
-                <!--<ul class="tags_list">
-                    <li class="tag">Dynamic List of tags will go here</li>
-                </ul>-->
-                <br />
-                <label for="restaurant_description_textarea">
-                    restaurant Description
+                <label for="new_restaurant_form_description_textarea">
+                    Restaurant Description
                 </label>
                 <br />
-                <textarea name="restaurant_description" id="restaurant_description_textarea" placeholder="Description of restaurant" cols="40"
+                <textarea name="description" id="new_restaurant_form_description_textarea" placeholder="Description of restaurant" cols="40"
                     rows="10"></textarea>
                 <br />
-                <input type="button" value="Submit" id="restaurant_submit" />
+                <input type="button" value="Submit" onclick="createRestaurant()" />
             </form>
+            <!-- This page will be hidden and used to display a review panel once the user creates the restaurant-->
             <div class="aligner-item" id="confirmation_pane" style="display:none">
                 <h4>Restaurant Name</h4>
+                <br />
                 <p id="confirm_rest_name"></p>
+                <br />
                 <h4>Restaurant Location</h4>
+                <br />
                 <p id="confirm_rest_location"></p>
+                <br />
                 <h4>Website</h4>
+                <br />
                 <p id="confirm_rest_website"></p>
-                <h4>Type of Cusine</h4>
-                <p id="confirm_rest_cusine"></p>
+                <br />
+                <h4>Type of cuisine</h4>
+                <br />
+                <p id="confirm_rest_cuisine"></p>
+                <br />
                 <h4>Dietary Restrictions</h4>
-                <p id="confirm_rest_diet"></p>
+                <br />
+                <p id="confirm_rest_dietary_restriction"></p>
+                <br />
                 <h4>Description</h4>
+                <br />
                 <p id="confirm_rest_description"></p>
-                <button id="edit_button">Edit</button>
-                <button id="confirm_button">Confirm</button>
-                <button id="delete_button">Delete</button>
+                <br />
+                <button id="edit_button" onclick="editRestaurant()">Edit</button>
+                <button id="confirm_button" onclick="confirmRestaurant()">Confirm</button>
+                <button id="delete_button" onclick="deleteRestaurant()">Delete</button>
             </div>
         </section>
 
@@ -159,10 +167,20 @@
         </address> Author Tai Rui Tong, March 16, 2016
     </footer>
 </body>
+<!-- FireBase Library -->
 <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-<script src="./_scripts/jquery-1.12.2.min.js"></script>
-<script src="./_scripts/cusines_options.js"></script>
-<script src="./_scripts/dietary_options.js"></script>
-<script src="./_scripts/create_restaurant.js"></script>
-
+<!-- Google Maps autocomplete Javascript -->
+<script src="./_scripts/core/gmaps_autocomplete.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAArLNjzIIS06R6SKoq8bEh5cLL9s_BzpI&libraries=places&callback=initMap"
+    async defer></script>
+<!-- JQuery Library -->
+<script src="./_lib/jquery-2.2.1.min.js"></script>
+<!-- Main firebase connection -->
+<script src="./_scripts/core/firebase.js"></script>
+<!-- Cuisine Options FireBase -->
+<script src="./_scripts/core/cuisines_options.js"></script>
+<!-- Dietary Restrictions Options FireBase -->
+<script src="./_scripts/core/dietary_options.js"></script>
+<!-- Create Restaurant Page -->
+<script src="./_scripts/views/create_restaurant.js"></script>
 </html>

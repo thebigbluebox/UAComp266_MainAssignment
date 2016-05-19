@@ -1,6 +1,16 @@
-var restaurantListRef;
+/**
+ * restaurants_room.js displays a list of all restaurants that are added to the room, and handles
+ * the addition of new restaurants to the list. This class also will tally votes set by the user
+ * This file implement's FireBase's callback and snapshot pattern
+ * 
+ * This file is very similar to cuisines_options, please refer to that for firebase pattern's documentation
+ */
+var restaurantListRef = {};
+// This will be used for markers on the map
+var restaurantMapList = [];
+
 $(document).ready(function () {
-    var RESTAURANTLIST_SIZE = 5;
+    var RESTAURANTLIST_SIZE = 20;
     restaurantListRef = roomRef.child("restaurantList");
     var restaurantHtmlForPath = {};
 
@@ -14,13 +24,14 @@ $(document).ready(function () {
         newrestaurantRow.append($("<th/>"));
         newrestaurantRow.append($("<td/>").append($("<em/>").text(restaurantSnapshot.val().name)));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().location));
-        newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().cusines));
-        newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().criteria));
+        newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().cuisine));
+        newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().dietary_restriction));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().vote));
-
+        
+        restaurantMapList.push(restaurantSnapshot.val());
         // Store a reference to the table row so we can get it again later.
         restaurantHtmlForPath[restaurantSnapshot.key()] = newrestaurantRow;
-
+        
         // Insert the new score in the appropriate place in the table.
         if (prevRestaurantName === null) {
             $("#restaurantTable").append(newrestaurantRow);
@@ -29,6 +40,7 @@ $(document).ready(function () {
             var lowerScoreRow = restaurantHtmlForPath[prevRestaurantName];
             lowerScoreRow.before(newrestaurantRow);
         }
+        // This will handle the tally of scores for restaurants
         $("#" + restaurantSnapshot.key()).on('click', function (e) {
             var selectionId = $(this).attr("id");
             var upvotesRef = restaurantListRef.child(selectionId).child("vote");
@@ -38,7 +50,6 @@ $(document).ready(function () {
         });
     }
 
-    // Helper function to handle a score object being removed; just removes the corresponding table row.
     function handleRestaurantRemoved(restaurantSnapshot) {
         if (typeof (restaurantSnapshot) === "Undefined") {
             return;
@@ -48,18 +59,14 @@ $(document).ready(function () {
         delete restaurantHtmlForPath[restaurantSnapshot.key()];
     }
 
-    // Add a callback to handle when a new score is added. 
-    // This  function with on is used in accordance with firebase's JS
     restaurantListView.on('child_added', function (newrestaurantSnapshot, prevRestaurantName) {
         handleRestaurantAdded(newrestaurantSnapshot, prevRestaurantName);
     });
 
-    // Add a callback to handle when a score is removed
     restaurantListView.on('child_removed', function (oldrestaurantSnapshot) {
         handleRestaurantRemoved(oldrestaurantSnapshot);
     });
 
-    // Add a callback to handle when a score changes or moves positions.
     var changedCallback = function (restaurantSnapshot, prevRestaurantName) {
 
         if (typeof (restaurantSnapshot) === "Undefined" || typeof (prevRestaurantName) === "Undefined") {
@@ -70,43 +77,28 @@ $(document).ready(function () {
     };
     restaurantListView.on('child_moved', changedCallback);
     restaurantListView.on('child_changed', changedCallback);
-
-
-
-
-    $("#restaurant_foodCriteria_input").keypress(function (e) {
-        if (e.keyCode == 13) {
-            var newVote = 1;
-            var name = $("#restaurant_name_input").val();
-            $("#scoreInput").val("");
-
-            var location = $("#restaurant_location_input").val();
-            $("#restaurant_location_input").val("");
-
-            var foodCriterias = $("#restaurant_foodCriteria_input").val();
-            $("#restaurant_foodCriteria_input").val("");
-
-            if (name.length === 0)
-                return;
-            pushRestaurant(name, newVote, location, foodCriterias, []);
-        }
-    });
 });
-
-function pushRestaurant(name, vote, location, criteria, cusines) {
-    console.log(name, vote, location, criteria, cusines);
-    var criteriaSane = criteria | [];
-    var cusinesSane = cusines | [];
-    restaurantListRef.push({ name: name, vote: vote, location: location, criteria: criteriaSane, cusines: cusines });
+// Function that pushes restaurants into the room reference
+function pushRestaurant(name, vote, location, dietary_restriction, cuisine) {
+    console.log(name, vote, location, dietary_restriction, cuisine);
+    var criteriaSane = dietary_restriction | [];
+    var cuisinesSane = cuisine | [];
+    restaurantListRef.push({ name: name, vote: vote, location: location, dietary_restriction: dietary_restriction, cuisine: cuisine });
 }
 
+// function that handles the adding of restaurants
 function addRestaurant(restaurantKey) {
     var restaurant = fireBaseRef.child("restaurants").child(restaurantKey);
     console.log("restaurant key", restaurantKey);
     restaurant.on('value', function (dataSnapshot) {
         console.log("here", dataSnapshot.val().name);
-        pushRestaurant(dataSnapshot.val().name, 1, dataSnapshot.val().location, dataSnapshot.val().diet, dataSnapshot.val().cusines);
+        pushRestaurant(dataSnapshot.val().name, 1, dataSnapshot.val().location, dataSnapshot.val().dietary_restriction, dataSnapshot.val().cuisine);
     }, function (errorObject) {
         console.log("Error with query " + errorObject.code);
     });
 }
+
+$(".restaurantRow").click(function(e){
+    var selectedRestaurantKey = $(this).parent().attr("id");
+    console.log("selected",selectedRestaurantKey);
+});

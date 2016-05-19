@@ -1,6 +1,12 @@
+/**
+ * essential_room.js covers the grounds for some of the more important areas of 
+ * the room.html page, it covers the sharing link, and also the presentation logic
+ * for the page
+ */
 "use strict";
 
 // Function below from  stackoverflow http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+// This function extracts URL parameter values to be used
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -16,41 +22,35 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+// roomkey will be the given roomkey from firebase at the creation of this room
 var roomKey;
-var fireBaseRef;
+// roomRef will be a global variable for the rooom reference to be read by participant_room and restaurants_room
 var roomRef;
 $(document).ready(function () {
     //The following keys would be dynamic
     roomKey = getUrlParameter('room');
     // Change the current Share URL into the location URL
     $("#share_link").attr('href', window.location.href);
-    
-    fireBaseRef = new Firebase('torrid-fire-6240.firebaseIO.com');
+
     roomRef = fireBaseRef.child("rooms").child(roomKey);
-    
+
     var roomName = '';
     var roomCode = 0;
-    var privateRoom = false;
     var roomLocation = '';
-
+    // We will get the basic roomvalues from firebase once
     roomRef.on("value", function (snapshot) {
         roomName = snapshot.val().roomName;
-        // pinNumber = snapshot.val().roomPin;
-        // privateRoom = Boolean(snapshot.val().privateRoomBoolean);
         roomLocation = snapshot.val().roomLocation;
 
         $("#room_name").html(roomName);
-        // if (privateRoom) {
-            // $("#room_pin").html('Pin:' + pinNumber);
-        // } else {
-            $("#room_pin").html(roomKey);
-        // }
+        $("#room_code").html(roomKey);
         $("#room_location").html(roomLocation);
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
 });
 
+// This function will toggle the restaurant search panel
 function toggleRestaurantSearch() {
-    $("#restaurant_search").toggle();
+    $("#restaurant_search_panel").toggle();
 }
