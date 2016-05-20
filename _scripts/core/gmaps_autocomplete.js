@@ -1,19 +1,21 @@
 // This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+// This file is taken from Google Maps API as a demo for Places Autocomplete feature
+// https://developers.google.com/maps/documentation/javascript/places-autocomplete#introduction
 var coord;
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 43.6532, lng: -79.3832 },
         zoom: 13
     });
+    // The autocomplete input
     var input = /** @type {!HTMLInputElement} */(
         document.getElementById('pac-input'));
-
+    
+    // Forces the input to be on the top left of the map
     var types = document.getElementById('type-selector');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-
+    
+    // The actualy binding of the auto complete
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
 
@@ -28,7 +30,7 @@ function initMap() {
         marker.setVisible(false);
         var place = autocomplete.getPlace();
         if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
+            window.alert("This location is not properly addressed");
             return;
         }
 
@@ -37,9 +39,11 @@ function initMap() {
             map.fitBounds(place.geometry.viewport);
         } else {
             map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
+            map.setZoom(17);
         }
-        marker.setIcon(/** @type {google.maps.Icon} */({
+        
+        // The actual marker of the location that is found
+        marker.setIcon(({
             url: place.icon,
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
@@ -50,6 +54,8 @@ function initMap() {
         marker.setVisible(true);
         coord = place.geometry.location.toJSON();
         var address = '';
+        
+        // Setting the info window tab to for the marker
         if (place.address_components) {
             address = [
                 (place.address_components[0] && place.address_components[0].short_name || ''),

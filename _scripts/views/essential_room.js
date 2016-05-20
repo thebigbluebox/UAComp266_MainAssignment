@@ -45,6 +45,8 @@ $(document).ready(function () {
         $("#room_name").html(roomName);
         $("#room_code").html(roomKey);
         $("#room_location").html(roomLocation);
+        roomMarker.lnglat = snapshot.val().lnglat;
+        roomMarker.caption = roomName;
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });

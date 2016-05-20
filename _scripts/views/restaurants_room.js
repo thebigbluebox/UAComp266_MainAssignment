@@ -6,8 +6,6 @@
  * This file is very similar to cuisines_options, please refer to that for firebase pattern's documentation
  */
 var restaurantListRef = {};
-// This will be used for markers on the map
-var restaurantMapList = [];
 
 $(document).ready(function () {
     var RESTAURANTLIST_SIZE = 20;
@@ -27,11 +25,12 @@ $(document).ready(function () {
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().cuisine));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().dietary_restriction));
         newrestaurantRow.append($("<td/>").text(restaurantSnapshot.val().vote));
-        
-        restaurantMapList.push(restaurantSnapshot.val());
+
+        // restaurantLocations.push({ lnglat: restaurantSnapshot.val().lnglat, restaurantName: restaurantSnapshot.val().name });
+        setMarker(map, { lnglat: restaurantSnapshot.val().lnglat, restaurantName: restaurantSnapshot.val().name });
         // Store a reference to the table row so we can get it again later.
         restaurantHtmlForPath[restaurantSnapshot.key()] = newrestaurantRow;
-        
+
         // Insert the new score in the appropriate place in the table.
         if (prevRestaurantName === null) {
             $("#restaurantTable").append(newrestaurantRow);
@@ -48,6 +47,7 @@ $(document).ready(function () {
                 return (current_value || 0) + 1;
             });
         });
+        setMarkers(map,restaurantLocations);
     }
 
     function handleRestaurantRemoved(restaurantSnapshot) {
@@ -79,26 +79,24 @@ $(document).ready(function () {
     restaurantListView.on('child_changed', changedCallback);
 });
 // Function that pushes restaurants into the room reference
-function pushRestaurant(name, vote, location, dietary_restriction, cuisine) {
+function pushRestaurant(name, vote, location, lnglat, dietary_restriction, cuisine) {
     console.log(name, vote, location, dietary_restriction, cuisine);
     var criteriaSane = dietary_restriction | [];
     var cuisinesSane = cuisine | [];
-    restaurantListRef.push({ name: name, vote: vote, location: location, dietary_restriction: dietary_restriction, cuisine: cuisine });
+    restaurantListRef.push({ name: name, vote: vote, location: location, lnglat: lnglat, dietary_restriction: dietary_restriction, cuisine: cuisine });
 }
 
 // function that handles the adding of restaurants
 function addRestaurant(restaurantKey) {
     var restaurant = fireBaseRef.child("restaurants").child(restaurantKey);
-    console.log("restaurant key", restaurantKey);
     restaurant.on('value', function (dataSnapshot) {
-        console.log("here", dataSnapshot.val().name);
-        pushRestaurant(dataSnapshot.val().name, 1, dataSnapshot.val().location, dataSnapshot.val().dietary_restriction, dataSnapshot.val().cuisine);
+        pushRestaurant(dataSnapshot.val().name, 1, dataSnapshot.val().location, dataSnapshot.val().lnglat, dataSnapshot.val().dietary_restriction, dataSnapshot.val().cuisine);
     }, function (errorObject) {
         console.log("Error with query " + errorObject.code);
     });
 }
 
-$(".restaurantRow").click(function(e){
+$(".restaurantRow").click(function (e) {
     var selectedRestaurantKey = $(this).parent().attr("id");
-    console.log("selected",selectedRestaurantKey);
+    console.log("selected", selectedRestaurantKey);
 });

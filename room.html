@@ -21,12 +21,21 @@
     <link rel="stylesheet" href="./_style/gmap.css" />
     <style>
         .room_only {
-            display:block;
+            display: block;
         }
     </style>
 </head>
 
 <body class="site">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=866589140112179";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <nav class="container">
         <div class="nav_left nav_bar">
             <ul>
@@ -54,6 +63,9 @@
                 <h4 id="room_code">Room Code</h4>
                 <h4 id="room_location">Room Location</h4>
                 <h4>Share this link to your friends <a href="" title="The link of to get to this room" id="share_link">Copy this Link</a></h4>
+                <div class="fb-share-button" data-href="http://student.athabascau.ca/~tairuito/room.html?room=-KI8R7FZdAzYSxII5W9-" data-layout="button" data-mobile-iframe="true"></div>
+                <br />
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Join%20me%20for%20lunch%20Eatr&url=http:%3A%2F%2Featr.com%2F">Tweet</a>
                 <form name="join_room_form" action="#" id="join_room_form" class="aligner-item">
                     <label for="join_room_name_input">
                         Name
@@ -114,7 +126,8 @@
                     fulfills the dietary restriction">
                         By Dietary Restriction
                     </label>
-                                <select name="dietary_restriction" id="restaurant_search_form_dietary_restriction_select" class="dietary_restriction_select" multiple="multiple">
+                                <select name="dietary_restriction" id="restaurant_search_form_dietary_restriction_select" class="dietary_restriction_select"
+                                    multiple="multiple">
                         <option value="vegan">Vegan</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="halal">Halal</option>
@@ -194,6 +207,11 @@
 <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 <!-- Google Maps autocomplete Javascript -->
 <script src="./_scripts/core/gmaps_multimarkers.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAArLNjzIIS06R6SKoq8bEh5cLL9s_BzpI&libraries=places&callback=initMap"></script>
+<!-- Facebook JS -->
+<script src="./_scripts/core/facebook.js"></script>
+<!-- Twitter JS -->
+<script src="./_scripts/core/twitter.js"></script>
 <!-- JQuery Library -->
 <script src="./_lib/jquery-2.2.1.min.js"></script>
 <!-- Main firebase connection -->
@@ -210,4 +228,5 @@
 <script src="./_scripts/views/restaurants_room.js"></script>
 <!-- Find restaurants component -->
 <script src="./_scripts/views/find_restaurant.js"></script>
+
 </html>

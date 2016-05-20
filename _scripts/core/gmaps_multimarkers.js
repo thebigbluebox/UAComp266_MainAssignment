@@ -1,63 +1,90 @@
 // In the following example, markers appear when the user clicks on the map.
 // The markers are stored in an array.
 // The user can then click an option to hide, show or delete the markers.
+// This file is referenced from Google's map api
+// https://developers.google.com/maps/documentation/javascript/examples/marker-remove
 var map;
+// roomMarker will be set by the room_essentials.js when it passes the room's marker location
+var roomMarker = {};
+var restaurantLocations = [];
 var markers = [];
+var infos = [];
+
+// Solution provided by http://jsfiddle.net/ZFvDV/
 
 function initMap() {
-  var haightAshbury = {lat: 37.769, lng: -122.446};
-
+  var roomLocation = { lat: 43.5890452, lng: -79.6441198 };
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: haightAshbury,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
-  });
-
-  // This event listener will call addMarker() when the map is clicked.
-  map.addListener('click', function(event) {
-    addMarker(event.latLng);
+    center: roomLocation,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
   // Adds a marker at the center of the map.
-  addMarker(haightAshbury);
+  addMarker(roomLocation);
+
+  setMarkers(map, markers);
+}
+// Sets a set of markers solution from http://jsfiddle.net/ZFvDV/
+function setMarkers(map, markers) {
+  var marker;
+  for (var i; i < restaurantLocations.length; i++) {
+    var restaurantName = restaurantLocations[i].val().name;
+    addMarker(restaurantLocations[i].lnglat, restaurantName);
+    var content = "<p>" + restaurantName + "</p>";
+    var infoWindow = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(marker, "click",
+      (function (marker, content, infoWindow) {
+        return function () {
+          closeInfos();
+
+          infoWindow.setContent(content);
+          infoWindow.open(map, marker);
+
+          infos[0] = infoWindow;
+        };
+      })(marker, content, infoWindw));
+  }
+}
+// Sets a single marker instead of a set of markers
+function setMarker(map, marker) {
+    var restaurantName = marker.restaurantName;
+    var markerObj = addMarker(marker.lnglat, restaurantName);
+    var content = "<h3>" + restaurantName + "</h3>";
+    var infoWindow = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(markerObj, "click",
+      (function (markerObj, content, infoWindow) {
+        return function () {
+          closeInfos();
+
+          infoWindow.setContent(content);
+          infoWindow.open(map, markerObj);
+
+          infos[0] = infoWindow;
+        };
+      })(markerObj, content, infoWindow));
 }
 
-// Adds a marker to the map and push to the array.
-function addMarker(location) {
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map
-  });
-  markers.push(marker);
-}
+// Closes infotabs that are open
+function closeInfos() {
 
-// Sets the map on all markers in the array.
-function setMapOnAll(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+  if (infos.length > 0) {
+
+    infos[0].set("marker", null);
+    infos[0].close();
+
+    infos.length = 0;
   }
 }
 
-function setInfoPaneOnAll(map) {
-    for(var i = 0; i < markers.length; i++) {
-        markers[i].addListener('click',function() {
-           infowindow.open(map, marker); 
-        });
-    }
-}
-
-// Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-  setMapOnAll(null);
-}
-
-// Shows any markers currently in the array.
-function showMarkers() {
-  setMapOnAll(map);
-}
-
-// Deletes all markers in the array by removing references to them.
-function deleteMarkers() {
-  clearMarkers();
-  markers = [];
+// Returns a marker object
+function addMarker(location, title) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    title: title
+  });
+  return marker;
 }

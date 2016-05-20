@@ -7,7 +7,7 @@ $(document).ready(function () {
             var roomcode = $("#room_code").val();
             var currentUrl = window.location.href;
             if (roomcode.trim().length > 0) {
-                window.location.replace(currentUrl + '/room.html?room=' + roomcode);
+                window.location.href= 'room.html?room=' + roomcode;
             }
         }
     });
